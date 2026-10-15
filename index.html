@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chronos Trivia Master - 50 Questions Historical & Scientific Challenge</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+            }
+          },
+          animation: {
+            'bounce-slow': 'bounce 2.5s infinite',
+            'pulse-glow': 'pulseGlow 2s infinite ease-in-out',
+          },
+          keyframes: {
+            pulseGlow: {
+              '0%, 100%': { transform: 'scale(1)', opacity: '0.9' },
+              '50%': { transform: 'scale(1.05)', opacity: '1' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: rgba(30, 41, 59, 0.5);
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #475569;
+      border-radius: 9999px;
+    }
+    .choice-card {
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .choice-card:hover:not(:disabled) {
+      transform: translateY(-2px);
+    }
+    .choice-card:active:not(:disabled) {
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950">
+
+  <!-- Top Navigation & Global Controls -->
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur-md sticky top-0 z-30">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3 cursor-pointer" onclick="showHomeScreen()">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 via-orange-500 to-rose-500 flex items-center justify-center shadow-lg shadow-amber-500/20">
+          <i class="fa-solid fa-hourglass-half text-white text-lg"></i>
+        </div>
+        <div>
+          <h1 class="font-bold text-lg leading-tight tracking-tight text-white flex items-center gap-2">
+            Chronos <span class="text-xs px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 font-semibold tracking-wider uppercase">Master Trivia</span>
+          </h1>
+          <p class="text-xs text-slate-400">History • Motoring • Evolution • Sites</p>
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-2 sm:space-x-4">
+        <!-- Sound Toggle -->
+        <button id="soundToggleBtn" onclick="toggleAudio()" class="p-2.5 rounded-xl border border-slate-800 bg-slate-800/60 hover:bg-slate-700/80 text-slate-300 hover:text-white transition flex items-center gap-2 text-sm" title="Toggle Sound FX">
+          <i id="soundIcon" class="fa-solid fa-volume-high text-amber-400"></i>
+          <span class="hidden sm:inline text-xs font-medium" id="soundStatusText">SFX On</span>
+        </button>
+
+        <!-- Help / Keys button -->
+        <button onclick="toggleHelpModal()" class="p-2.5 rounded-xl border border-slate-800 bg-slate-800/60 hover:bg-slate-700/80 text-slate-300 hover:text-white transition text-sm" title="Keyboard Shortcuts & Info">
+          <i class="fa-solid fa-keyboard"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 py-6 flex flex-col justify-center">
+
+    <!-- SCREEN 1: WELCOME & CONFIGURATION -->
+    <section id="welcomeScreen" class="w-full max-w-3xl mx-auto space-y-8 py-4">
+      <div class="text-center space-y-4">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/90 border border-slate-700 text-xs text-slate-300 font-medium mb-1">
+          <i class="fa-solid fa-award text-amber-400"></i> Competitive Scoring & Medal Rank Hierarchy
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-slate-100 via-amber-200 to-amber-500">
+          The Ultimate Curiosity Challenge
+        </h2>
+        <p class="text-slate-400 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
+          Embark on a voyage spanning the dawn of species, classic automotive revolutions, turning points in world history, and iconic architectural wonders.
+        </p>
+      </div>
+
+      <!-- Medal Tier Legend Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div class="p-4 rounded-2xl bg-slate-900/90 border border-amber-500/30 flex items-center space-x-3.5 shadow-md shadow-amber-500/5">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-2xl flex-shrink-0">
+            🥇
+          </div>
+          <div>
+            <div class="text-xs uppercase tracking-widest text-amber-400 font-bold">Top 30% Rank</div>
+            <div class="font-bold text-slate-100">Gold Medal</div>
+            <div class="text-xs text-slate-400">71% – 100% score</div>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-400/30 flex items-center space-x-3.5 shadow-md">
+          <div class="w-12 h-12 rounded-xl bg-slate-400/20 text-slate-300 flex items-center justify-center text-2xl flex-shrink-0">
+            🥈
+          </div>
+          <div>
+            <div class="text-xs uppercase tracking-widest text-slate-300 font-bold">Middle 30% Rank</div>
+            <div class="font-bold text-slate-100">Silver Medal</div>
+            <div class="text-xs text-slate-400">41% – 70% score</div>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-900/90 border border-amber-700/30 flex items-center space-x-3.5 shadow-md">
+          <div class="w-12 h-12 rounded-xl bg-amber-800/20 text-amber-600 flex items-center justify-center text-2xl flex-shrink-0">
+            🥉
+          </div>
+          <div>
+            <div class="text-xs uppercase tracking-widest text-amber-600 font-bold">Next 40% Rank</div>
+            <div class="font-bold text-slate-100">Bronze Medal</div>
+            <div class="text-xs text-slate-400">0% – 40% score</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mode & Scope Selection -->
+      <div class="p-6 rounded-3xl bg-slate-900/90 border border-slate-800 space-y-6 shadow-xl">
+        <h3 class="text-base font-bold text-slate-200 flex items-center gap-2">
+          <i class="fa-solid fa-sliders text-amber-400"></i> Configure Your Round
+        </h3>
+
+        <!-- Mode Selectors -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <label class="relative flex flex-col p-4 rounded-2xl border-2 cursor-pointer transition border-amber-500 bg-amber-500/10 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-500/10 hover:border-slate-600">
+            <input type="radio" name="quizMode" value="marathon" checked class="sr-only" onchange="updateModeSelection()">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Grand Marathon</span>
+              <i class="fa-solid fa-flag-checkered text-amber-400"></i>
+            </div>
+            <span class="text-lg font-black text-white">All 50 Questions</span>
+            <span class="text-xs text-slate-400 mt-1">Ultimate test across all four distinct historic domains.</span>
+          </label>
+
+          <label class="relative flex flex-col p-4 rounded-2xl border-2 border-slate-800 bg-slate-800/40 cursor-pointer transition has-[:checked]:border-amber-500 has-[:checked]:bg-amber-500/10 hover:border-slate-700">
+            <input type="radio" name="quizMode" value="quick" class="sr-only" onchange="updateModeSelection()">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold uppercase tracking-wider text-sky-400">Quick Sprint</span>
+              <i class="fa-solid fa-bolt text-sky-400"></i>
+            </div>
+            <span class="text-lg font-black text-white">20 Questions</span>
+            <span class="text-xs text-slate-400 mt-1">A curated randomized sprint for rapid competitive play.</span>
+          </label>
+
+          <label class="relative flex flex-col p-4 rounded-2xl border-2 border-slate-800 bg-slate-800/40 cursor-pointer transition has-[:checked]:border-amber-500 has-[:checked]:bg-amber-500/10 hover:border-slate-700">
+            <input type="radio" name="quizMode" value="custom" class="sr-only" onchange="updateModeSelection()">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Category Focus</span>
+              <i class="fa-solid fa-layer-group text-emerald-400"></i>
+            </div>
+            <span class="text-lg font-black text-white">Single Field</span>
+            <span class="text-xs text-slate-400 mt-1">Focus strictly on one chosen subject matter.</span>
+          </label>
+        </div>
+
+        <!-- Category Dropdown (for custom mode) -->
+        <div id="categoryPickerContainer" class="hidden pt-2 border-t border-slate-800/80">
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Select Domain</label>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+            <button type="button" onclick="selectFocusCategory('motoring', this)" class="cat-pill active-cat px-3 py-2.5 rounded-xl border border-amber-500/50 bg-amber-500/20 text-xs font-bold text-amber-200 text-center flex items-center justify-center gap-1.5 transition">
+              <i class="fa-solid fa-car"></i> Motoring
+            </button>
+            <button type="button" onclick="selectFocusCategory('events', this)" class="cat-pill px-3 py-2.5 rounded-xl border border-slate-700 bg-slate-800/70 text-xs font-medium text-slate-300 hover:text-white text-center flex items-center justify-center gap-1.5 transition">
+              <i class="fa-solid fa-earth-americas"></i> World Events
+            </button>
+            <button type="button" onclick="selectFocusCategory('evolution', this)" class="cat-pill px-3 py-2.5 rounded-xl border border-slate-700 bg-slate-800/70 text-xs font-medium text-slate-300 hover:text-white text-center flex items-center justify-center gap-1.5 transition">
+              <i class="fa-solid fa-dna"></i> Evolution
+            </button>
+            <button type="button" onclick="selectFocusCategory('sites', this)" class="cat-pill px-3 py-2.5 rounded-xl border border-slate-700 bg-slate-800/70 text-xs font-medium text-slate-300 hover:text-white text-center flex items-center justify-center gap-1.5 transition">
+              <i class="fa-solid fa-monument"></i> Historic Sites
+            </button>
+          </div>
+        </div>
+
+        <!-- Launch Button -->
+        <button onclick="startQuiz()" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-400 hover:to-orange-500 text-slate-950 font-extrabold text-base tracking-wide uppercase transition shadow-xl shadow-amber-500/25 flex items-center justify-center gap-3 group">
+          <span>Begin Challenge</span>
+          <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- SCREEN 2: ACTIVE QUIZ -->
+    <section id="quizScreen" class="hidden w-full max-w-3xl mx-auto space-y-5">
+      <!-- HUD Bar: Progress, Points, Streak -->
+      <div class="p-4 sm:p-5 rounded-3xl bg-slate-900/90 border border-slate-800/80 shadow-lg space-y-3">
+        <div class="flex items-center justify-between text-xs sm:text-sm font-semibold">
+          <div class="flex items-center gap-2">
+            <span id="categoryBadge" class="px-3 py-1 rounded-full bg-slate-800 text-amber-300 border border-slate-700 flex items-center gap-1.5 font-bold uppercase tracking-wider text-[11px]">
+              <i class="fa-solid fa-tag"></i> Motoring History
+            </span>
+            <span class="text-slate-400">
+              Q <strong id="currentQuestionNum" class="text-white text-sm">1</strong> of <span id="totalQuestionsNum" class="text-slate-300">50</span>
+            </span>
+          </div>
+
+          <div class="flex items-center gap-4">
+            <!-- Streak indicator -->
+            <div id="streakBox" class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 font-bold text-xs">
+              <i class="fa-solid fa-fire text-amber-400"></i>
+              <span id="streakCount">0</span> Streak
+            </div>
+
+            <!-- Running Score -->
+            <div class="text-right">
+              <span class="text-slate-400 text-xs block leading-none">Score</span>
+              <span id="scoreDisplay" class="text-base sm:text-lg font-black text-amber-400">0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress Track -->
+        <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden p-0.5 border border-slate-700/50">
+          <div id="progressBar" class="bg-gradient-to-r from-amber-500 to-orange-500 h-full rounded-full transition-all duration-300 ease-out" style="width: 2%"></div>
+        </div>
+      </div>
+
+      <!-- Question Card -->
+      <div class="p-6 sm:p-8 rounded-3xl bg-slate-900/95 border border-slate-800 shadow-2xl space-y-6 relative overflow-hidden">
+        <div class="flex items-start justify-between gap-4">
+          <h2 id="questionText" class="text-lg sm:text-2xl font-bold text-slate-100 leading-snug">
+            Question text loading...
+          </h2>
+        </div>
+
+        <!-- Choices Grid (A, B, C, D) -->
+        <div id="choicesGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
+          <!-- Dynamically populated choices -->
+        </div>
+
+        <!-- Reveal & Fact Snippet (Appears after answer) -->
+        <div id="factBox" class="hidden p-4 rounded-2xl bg-slate-800/80 border border-slate-700/70 transition space-y-1.5 animate-fadeIn">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-400">
+            <i class="fa-solid fa-lightbulb"></i> Historical Insight
+          </div>
+          <p id="factSnippetText" class="text-sm text-slate-300 leading-relaxed">
+            Explanation fact appears here.
+          </p>
+        </div>
+
+        <!-- Action / Advance Controls -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
+          <div class="text-xs text-slate-500 flex items-center gap-1.5">
+            <i class="fa-solid fa-circle-info"></i> Keyboard shortcut: press <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300 font-mono">A</kbd> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300 font-mono">B</kbd> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300 font-mono">C</kbd> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300 font-mono">D</kbd> or <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300 font-mono">Enter</kbd>
+          </div>
+
+          <button id="nextBtn" onclick="nextQuestion()" disabled class="w-full sm:w-auto px-7 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 disabled:opacity-40 disabled:hover:bg-amber-500 text-slate-950 font-bold text-sm tracking-wide transition flex items-center justify-center gap-2 shadow-lg shadow-amber-500/10">
+            <span id="nextBtnLabel">Next Question</span>
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 3: RESULTS & MEDAL RANKING -->
+    <section id="resultScreen" class="hidden w-full max-w-3xl mx-auto space-y-6">
+      <!-- Main Podium Card -->
+      <div class="p-6 sm:p-10 rounded-3xl bg-slate-900 border border-slate-800 text-center relative overflow-hidden shadow-2xl">
+        <!-- Background subtle glow -->
+        <div id="medalGlowBg" class="absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10 space-y-4">
+          <!-- Big Medal Icon -->
+          <div id="medalIconWrap" class="w-24 h-24 mx-auto rounded-3xl bg-amber-500/20 border-2 border-amber-500/40 flex items-center justify-center text-5xl shadow-xl">
+            🥇
+          </div>
+
+          <div>
+            <div id="medalTierName" class="text-xs uppercase font-extrabold tracking-widest text-amber-400">
+              Gold Medal Tier (Top 30%)
+            </div>
+            <h2 id="rankTitle" class="text-2xl sm:text-4xl font-black text-white mt-1">
+              Grand Master Historian
+            </h2>
+            <p id="rankSubtitle" class="text-sm text-slate-400 mt-2 max-w-md mx-auto">
+              Exceptional prowess! You demonstrated thorough mastery across classic automotive milestones, ancient sites, world events, and biological evolution.
+            </p>
+          </div>
+
+          <!-- Quick Metrics Bar -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 max-w-2xl mx-auto">
+            <div class="p-3.5 rounded-2xl bg-slate-800/60 border border-slate-700/60">
+              <span class="text-xs text-slate-400 block font-medium">Final Score</span>
+              <span id="finalScoreVal" class="text-xl sm:text-2xl font-black text-amber-400">0</span>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-slate-800/60 border border-slate-700/60">
+              <span class="text-xs text-slate-400 block font-medium">Accuracy</span>
+              <span id="finalAccuracyVal" class="text-xl sm:text-2xl font-black text-emerald-400">0%</span>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-slate-800/60 border border-slate-700/60">
+              <span class="text-xs text-slate-400 block font-medium">Correct</span>
+              <span id="finalCorrectCount" class="text-xl sm:text-2xl font-black text-white">0/50</span>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-slate-800/60 border border-slate-700/60">
+              <span class="text-xs text-slate-400 block font-medium">Best Streak</span>
+              <span id="finalBestStreak" class="text-xl sm:text-2xl font-black text-orange-400">0</span>
+            </div>
+          </div>
+
+          <!-- Category Performance Breakdown -->
+          <div class="pt-4 text-left max-w-2xl mx-auto space-y-3">
+            <h4 class="text-xs uppercase tracking-wider font-bold text-slate-400 flex items-center gap-1.5">
+              <i class="fa-solid fa-chart-pie text-amber-400"></i> Domain Breakdown
+            </h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="categoryStatsGrid">
+              <!-- Dynamically populated category badges with mini bars -->
+            </div>
+          </div>
+
+          <!-- Buttons -->
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-6">
+            <button onclick="startQuiz()" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-sm uppercase tracking-wider transition shadow-lg shadow-amber-500/20 flex items-center justify-center gap-2">
+              <i class="fa-solid fa-rotate-right"></i> Play Again
+            </button>
+            <button onclick="toggleReviewModal()" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold text-sm transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-list-check"></i> Review All Answers
+            </button>
+            <button onclick="showHomeScreen()" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-slate-800/60 hover:bg-slate-700 text-slate-300 font-semibold text-sm transition">
+              Change Mode
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- REVIEW MODAL -->
+  <div id="reviewModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-3xl max-h-[85vh] flex flex-col shadow-2xl overflow-hidden">
+      <div class="p-5 border-b border-slate-800 flex items-center justify-between">
+        <div>
+          <h3 class="font-bold text-lg text-white flex items-center gap-2">
+            <i class="fa-solid fa-book-open text-amber-400"></i> Complete Question Review
+          </h3>
+          <p class="text-xs text-slate-400">Explore every question, your selected choice, and the official fact.</p>
+        </div>
+        <button onclick="toggleReviewModal()" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center transition">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div id="reviewList" class="p-5 overflow-y-auto space-y-4 custom-scrollbar">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <div class="p-4 border-t border-slate-800 bg-slate-900/60 text-right">
+        <button onclick="toggleReviewModal()" class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-semibold">
+          Close Review
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- HELP & SHORTCUTS MODAL -->
+  <div id="helpModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-md p-6 shadow-2xl space-y-5">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <h3 class="font-bold text-base text-white flex items-center gap-2">
+          <i class="fa-solid fa-circle-question text-amber-400"></i> Game Mechanics & Keys
+        </h3>
+        <button onclick="toggleHelpModal()" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="space-y-3 text-xs sm:text-sm text-slate-300">
+        <p><strong>Medal Tier Hierarchy:</strong></p>
+        <ul class="list-disc pl-5 space-y-1 text-slate-400">
+          <li><span class="text-amber-400 font-semibold">🥇 Gold Medal:</span> Top 30% performance (71% - 100%)</li>
+          <li><span class="text-slate-300 font-semibold">🥈 Silver Medal:</span> Middle 30% performance (41% - 70%)</li>
+          <li><span class="text-amber-600 font-semibold">🥉 Bronze Medal:</span> Remaining 40% performance (0% - 40%)</li>
+        </ul>
+
+        <p class="pt-2"><strong>Keyboard Controls:</strong></p>
+        <div class="grid grid-cols-2 gap-2 text-xs">
+          <div class="p-2 rounded-lg bg-slate-800/80 border border-slate-700"><kbd class="text-amber-300 font-mono">A / 1</kbd> Choice A</div>
+          <div class="p-2 rounded-lg bg-slate-800/80 border border-slate-700"><kbd class="text-amber-300 font-mono">B / 2</kbd> Choice B</div>
+          <div class="p-2 rounded-lg bg-slate-800/80 border border-slate-700"><kbd class="text-amber-300 font-mono">C / 3</kbd> Choice C</div>
+          <div class="p-2 rounded-lg bg-slate-800/80 border border-slate-700"><kbd class="text-amber-300 font-mono">D / 4</kbd> Choice D</div>
+          <div class="p-2 rounded-lg bg-slate-800/80 border border-slate-700 col-span-2"><kbd class="text-amber-300 font-mono">Enter / Space</kbd> Next Question</div>
+        </div>
+
+        <p class="pt-2 text-xs text-slate-400">
+          <strong>Streaks:</strong> Each consecutive right answer earns a scaling multiplier (+25 bonus points per streak count)!
+        </p>
+      </div>
+
+      <button onclick="toggleHelpModal()" class="w-full py-2.5 rounded-xl bg-amber-500 text-slate-950 font-bold text-xs uppercase tracking-wider">
+        Got it!
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-900 bg-slate-950/80 py-4 text-center text-xs text-slate-500">
+    <p>Chronos Trivia Master • 50 Curated Inquiries into Human Ingenuity & Earth's History</p>
+  </footer>
+
+  <!-- SCRIPT LOGIC -->
+  <script>
+    /* =====================================================================
+       1. COMPLETE 50 QUESTIONS REPOSITORY
+       Categories:
+         - motoring (13 questions)
+         - events (13 questions)
+         - evolution (12 questions)
+         - sites (12 questions)
+       Total = 50 Questions
+       ===================================================================== */
+    const QUESTION_BANK = [
+      // --- MOTORING HISTORY (13) ---
+      {
+        id: 1,
+        category: 'motoring',
+        categoryLabel: 'Motoring History',
+        icon: 'fa-car',
+        question: "Widely credited as the world's first true production automobile powered by an internal combustion engine, in what year did Karl Benz patent the 'Motorwagen'?",
+        choices: ["1886", "1903", "1871", "1895"],
+        correctIndex: 0,
+        fact: "Karl Benz patented his three-wheeled Motorwagen on January 29, 1886 (German patent DRP No. 37435). His wife, Bertha Benz, completed the famous first long-distance motor drive in 1888."
+      },
+      {
+        id: 2,
+        category: 'motoring',
+        categoryLabel: 'Motoring History',
+        icon: 'fa-car',
+        question: "What vehicle famously introduced moving assembly line techniques to mass vehicle production in 1913?",
+        choices: ["Ford Model T", "Citroën 2CV", "Volkswagen Beetle", "Oldsmobile Curved Dash"],
+        correctIndex: 0,
+        fact: "Henry Ford implemented the first continuous moving assembly line at Highland Park in 1913, reducing Model T chassis assembly time from 12 hours to roughly 93 minutes."
+      },
+      {
+        id: 3,
+        category: 'motoring',
+        categoryLabel: 'Motoring History',
+        icon: 'fa-car',
+        question: "Which automaker invented the modern three-point seatbelt in 1959 and gave the patent away freely in the interest of public safety?",
+        choices: ["Mercedes-Benz", "Volvo", "Saab", "Rolls-Royce"],
+        correctIndex: 1,
+        fact: "Nils Bohlin designed the V-type three-point seatbelt for Volvo in 1959. Volvo opened the patent immediately, saving millions of lives over subsequent decades."
+      },
+      {
+        id: 4,
+        category: 'motoring',
+        categoryLabel: 'Motoring History',
+        icon: 'fa-car',
+        question: "Which sports car was developed specifically to defeat Ferrari at the 24 Hours of Le Mans, achieving a historic 1-2-3 sweep in 1966?",
+        choices: ["Chevrolet Corvette Stingray", "Ford GT40", "Porsche 917", "Aston Martin DB5"],
+        correctIndex: 1,
+        fact: "Spurred by Enzo Ferrari backing out of selling to Ford, Henry Ford II commissioned the Ford GT40, which dominated Le Mans from 1966 through 1969."
+      },
+      {
+        id: 5,
+        category: 'motoring',
+        categoryLabel: 'Motoring History',
+        icon: 'fa-car',
+        question: "In 1997, which vehicle became the first mass-produced hybrid passenger car sold commercially?",
+        choices: ["Honda Insight", "Toyota Prius", "Nissan Leaf", "General Motors EV1"],
+        correctIndex: 1,
+        fact: "Toyota launched the first-generation Prius (XW10) in Japan in late 1997, pioneering nickel-metal hydride batteries and the synergy drive hybrid powertrain."
+      },
+      {
+        id: 6,
+        category: 'motoring',
+        categoryLabel: 'Motoring History',
+        icon: 'fa-car',
+        question: "What was the legendary supercar produced by McLaren in 1992 that featured a central driver seat and gold foil lining in the engine bay?",
+        choices: ["McLaren P1", "McLaren F1", "McLaren Senna", "McLaren 720S"],
+        correctIndex: 1,
+        fact: "Engineered by Gordon Murray, the McLaren F1 used pure gold foil as a heat reflector in its BMW V12 engine bay and remained the fastest naturally aspirated car in history (240.1 mph)."
+      },
+      {
+        id: 7,
+        category: 'motoring',
+        categoryLabel: 'Motoring History',
+        icon: 'fa-car',
+        question: "What is the origin of the name 'Jeep', famously used for light utility vehicles during World War II?",
+        choices: [
+          "Slang for 'General Purpose' (GP) or a cartoon character named Eugene the Jeep",
+          "Named after an Army Major General named Donald Jeep",
+          "An acronym for 'Joint Expeditionary Equipment Patrol'",
+          "Derived from the French military term 'Jupe d'acier'"
+        ],
+        correctIndex: 0,
+        fact: "Most military historians attribute the name to the phonetic slur of 'GP' (General Purpose or Government Purpose vehicle) combined with popular comics featuring Eugene the Jeep from Popeye."
+      },
+      {
+        id: 8,
+        category: 'motoring',
+        categoryLabel: 'Motoring History',
+        icon: 'fa-car',
+        question: "Which Italian manufacturer created the Miura in 1966, pioneering the rear mid-engine two-seat supercar layout?",
+        choices: ["Ferrari", "Maserati", "Lamborghini", "Alfa Romeo"],
+        correctIndex: 2,
+        fact: "The Lamborghini Miura, designed by Marcello Gandini at Bertone, placed its 3.9-liter V12 transversely behind the cockpit, establishing the benchmark supercar blueprint."
+      },
+      {
+        id: 9,
+        category: 'motoring',
+        categoryLabel: 'Motoring History',
+        icon: 'fa-car',
+        question: "Which land speed record holder became the first car to officially break the sound barrier on land in October 1997?",
+        choices: ["Blue Flame", "ThrustSSC", "Bloodhound LSR", "Spirit of America"],
+        correctIndex: 1,
+        fact: "ThrustSSC, piloted by Royal Air Force pilot Andy Green in the Black Rock Desert of Nevada, hit an official record speed of 763.035 mph (Mach 1.016)."
+      },
+      {
+        id: 10,
+        category: 'motoring',
+        categoryLabel: 'Motoring History',
+        icon: 'fa-car',
+        question: "What German highway network, initiated in the 1930s, famously contains substantial sections without a mandated federal speed limit?",
+        choices: ["Autostrada", "Autobahn", "Autoroute", "Strada Statale"],
+        correctIndex: 1,
+        fact: "The German Autobahn network features advisory speed recommendations (Richtgeschwindigkeit of 130 km/h) on about 60% of its network, rather than a universal statutory speed cap."
+      },
+      {
+        id: 11,
+        category: 'motoring',
+        categoryLabel: 'Motoring History',
+        icon: 'fa-car',
+        question: "Which Japanese sports car nicknamed 'Godzilla' earned its reputation through consecutive dominating victories in Australian touring car championships?",
+        choices: ["Toyota Supra MK IV", "Nissan Skyline GT-R (R32)", "Mazda RX-7 FD", "Honda NSX-R"],
+        correctIndex: 1,
+        fact: "Australian magazine 'Wheels' crowned the Nissan Skyline R32 'Godzilla' in 1989 because its ATTESA E-TS all-wheel drive and twin-turbo RB26DETT motor crushed competition."
+      },
+      {
+        id: 12,
+        category: 'motoring',
+        categoryLabel: 'Motoring History',
+        icon: 'fa-car',
+        question: "What iconic luxury automobile features the 'Spirit of Ecstasy' hood ornament mascot?",
+        choices: ["Bentley", "Rolls-Royce", "Maybach", "Jaguar"],
+        correctIndex: 1,
+        fact: "Sculpted by Charles Robinson Sykes in 1911, the 'Spirit of Ecstasy' (or Flying Lady) represents Eleanor Velasco Thornton and graces Rolls-Royce radiators."
+      },
+      {
+        id: 13,
+        category: 'motoring',
+        categoryLabel: 'Motoring History',
+        icon: 'fa-car',
+        question: "Who developed the first rotary internal combustion engine (often utilized in Mazda sportscars like the RX-7 and RX-8)?",
+        choices: ["Felix Wankel", "Rudolf Diesel", "Nikolaus Otto", "Ferdinand Porsche"],
+        correctIndex: 0,
+        fact: "German engineer Felix Wankel patented the rotary engine design that converted pressure into rotating motion using an eccentric rotary design."
+      },
+
+      // --- WORLD EVENTS (13) ---
+      {
+        id: 14,
+        category: 'events',
+        categoryLabel: 'World Events',
+        icon: 'fa-earth-americas',
+        question: "In what year did the Fall of the Berlin Wall take place, signaling the impending end of the Cold War in Europe?",
+        choices: ["1987", "1989", "1991", "1985"],
+        correctIndex: 1,
+        fact: "On the evening of November 9, 1989, East German spokesman Günter Schabowski mistakenly announced immediate travel clearance, leading masses to tear down the wall."
+      },
+      {
+        id: 15,
+        category: 'events',
+        categoryLabel: 'World Events',
+        icon: 'fa-earth-americas',
+        question: "The assassination of Archduke Franz Ferdinand in 1914, which triggered World War I, occurred in which city?",
+        choices: ["Vienna", "Belgrade", "Sarajevo", "Budapest"],
+        correctIndex: 2,
+        fact: "Gavrilo Princip, a member of the Young Bosnia movement, shot Archduke Franz Ferdinand of Austria and his wife Sophie in Sarajevo on June 28, 1914."
+      },
+      {
+        id: 16,
+        category: 'events',
+        categoryLabel: 'World Events',
+        icon: 'fa-earth-americas',
+        question: "Which global treaty signed in 1919 officially concluded the state of war between Germany and the Allied Powers?",
+        choices: ["Treaty of Versailles", "Treaty of Utrecht", "Treaty of Ghent", "Treaty of Westphalia"],
+        correctIndex: 0,
+        fact: "The Treaty of Versailles was signed on June 28, 1919, exactly five years after the assassination of Archduke Franz Ferdinand, in the Hall of Mirrors at Versailles."
+      },
+      {
+        id: 17,
+        category: 'events',
+        categoryLabel: 'World Events',
+        icon: 'fa-earth-americas',
+        question: "In what year did the Apollo 11 mission safely land the first two humans on the Moon?",
+        choices: ["1967", "1969", "1971", "1973"],
+        correctIndex: 1,
+        fact: "Neil Armstrong and Buzz Aldrin landed the Apollo Lunar Module Eagle on July 20, 1969, and Armstrong took his 'one small step for man' six hours later."
+      },
+      {
+        id: 18,
+        category: 'events',
+        categoryLabel: 'World Events',
+        icon: 'fa-earth-americas',
+        question: "What historic event occurred on July 14, 1789, marking a crucial flashpoint in the French Revolution?",
+        choices: ["The Storming of the Bastille", "Execution of Louis XVI", "The Reign of Terror declaration", "The Tennis Court Oath"],
+        correctIndex: 0,
+        fact: "Parisian revolutionaries stormed the royal medieval fortress and prison known as the Bastille, an act now commemorated annually as France's National Day (Bastille Day)."
+      },
+      {
+        id: 19,
+        category: 'events',
+        categoryLabel: 'World Events',
+        icon: 'fa-earth-americas',
+        question: "Which pandemic struck Eurasia and North Africa between 1346 and 1353, killing an estimated 30% to 60% of Europe's population?",
+        choices: ["The Antonine Plague", "The Black Death", "The Justinian Plague", "The Spanish Flu"],
+        correctIndex: 1,
+        fact: "The Black Death, caused by the bacterium Yersinia pestis carried by rodent fleas, decimated mid-14th-century populations and altered socio-economic structures across Europe."
+      },
+      {
+        id: 20,
+        category: 'events',
+        categoryLabel: 'World Events',
+        icon: 'fa-earth-americas',
+        question: "The Magna Carta, which established the principle that everyone—even the monarch—is subject to the law, was agreed to by King John in what year?",
+        choices: ["1066", "1215", "1492", "1348"],
+        correctIndex: 1,
+        fact: "English barons compelled King John to sign the Great Charter ('Magna Carta') at Runnymede near Windsor on June 15, 1215."
+      },
+      {
+        id: 21,
+        category: 'events',
+        categoryLabel: 'World Events',
+        icon: 'fa-earth-americas',
+        question: "What 1944 military operation represented the largest amphibious invasion in human history?",
+        choices: ["Operation Barbarossa", "Operation Overlord (D-Day)", "Operation Market Garden", "Operation Torch"],
+        correctIndex: 1,
+        fact: "Launched on June 6, 1944, Operation Overlord landed over 156,000 Allied troops on five beachheads across the coast of Normandy, France."
+      },
+      {
+        id: 22,
+        category: 'events',
+        categoryLabel: 'World Events',
+        icon: 'fa-earth-americas',
+        question: "The collapse of which empire in 1453, following the siege of its capital Constantinople by the Ottomans, concluded the Middle Ages?",
+        choices: ["Holy Roman Empire", "Byzantine Empire", "Austro-Hungarian Empire", "Persian Sasanian Empire"],
+        correctIndex: 1,
+        fact: "Sultan Mehmed II led Ottoman forces in capturing Constantinople on May 29, 1453, bringing an end to the Eastern Roman (Byzantine) Empire after over a millennium."
+      },
+      {
+        id: 23,
+        category: 'events',
+        categoryLabel: 'World Events',
+        icon: 'fa-earth-americas',
+        question: "Nelson Mandela was inaugurated as South Africa's first democratically elected black president in which landmark year?",
+        choices: ["1988", "1990", "1994", "1999"],
+        correctIndex: 2,
+        fact: "Following his release from prison in 1990 and the dismantling of apartheid, Nelson Mandela won South Africa's multiracial elections and took office on May 10, 1994."
+      },
+      {
+        id: 24,
+        category: 'events',
+        categoryLabel: 'World Events',
+        icon: 'fa-earth-americas',
+        question: "In October 1962, the world came closest to nuclear warfare during a 13-day confrontation known as what?",
+        choices: ["The Suez Crisis", "The Cuban Missile Crisis", "The Berlin Airlift", "The Korean Armistice"],
+        correctIndex: 1,
+        fact: "The Cuban Missile Crisis erupted after American spy planes photographed Soviet medium-range nuclear ballistic missile installations under construction in Cuba."
+      },
+      {
+        id: 25,
+        category: 'events',
+        categoryLabel: 'World Events',
+        icon: 'fa-earth-americas',
+        question: "Which volcanic eruption in 79 AD completely buried the Roman cities of Pompeii and Herculaneum?",
+        choices: ["Mount Etna", "Mount Vesuvius", "Mount Stromboli", "Santorini / Thera"],
+        correctIndex: 1,
+        fact: "Mount Vesuvius exploded in a catastrophic Plinian eruption in autumn of 79 AD, burying inhabitants beneath meters of pumice, ash, and pyroclastic flows."
+      },
+      {
+        id: 26,
+        category: 'events',
+        categoryLabel: 'World Events',
+        icon: 'fa-earth-americas',
+        question: "Which global organization was founded in San Francisco in 1945 following the dissolution of the League of Nations?",
+        choices: ["NATO", "The United Nations (UN)", "The World Bank", "Interpol"],
+        correctIndex: 1,
+        fact: "Fifty nations signed the UN Charter on June 26, 1945, in San Francisco, entering into force on October 24, 1945, to prevent future global military conflicts."
+      },
+
+      // --- EVOLUTION & SCIENCE (12) ---
+      {
+        id: 27,
+        category: 'evolution',
+        categoryLabel: 'Evolution & Science',
+        icon: 'fa-dna',
+        question: "In 1859, Charles Darwin published his foundational treatise on natural selection under what title?",
+        choices: [
+          "The Descent of Man",
+          "On the Origin of Species",
+          "Principles of Geology",
+          "Philosophie Zoologique"
+        ],
+        correctIndex: 1,
+        fact: "Published on November 24, 1859, 'On the Origin of Species by Means of Natural Selection' synthesized Darwin's decades of research following his Voyage of the Beagle."
+      },
+      {
+        id: 28,
+        category: 'evolution',
+        categoryLabel: 'Evolution & Science',
+        icon: 'fa-dna',
+        question: "The famous 3.2-million-year-old hominin fossil skeleton nicknamed 'Lucy', discovered in Ethiopia in 1974, belongs to which species?",
+        choices: ["Homo erectus", "Australopithecus afarensis", "Homo habilis", "Ardipithecus ramidus"],
+        correctIndex: 1,
+        fact: "Donald Johanson and Tom Gray found 'Lucy' (Australopithecus afarensis) in Hadar, Ethiopia. She was nicknamed after the Beatles song 'Lucy in the Sky with Diamonds'."
+      },
+      {
+        id: 29,
+        category: 'evolution',
+        categoryLabel: 'Evolution & Science',
+        icon: 'fa-dna',
+        question: "Modern birds are phylogenetic descendants of which group of extinct organisms?",
+        choices: ["Pterosaurs", "Theropod dinosaurs", "Sauropods", "Plesiosaurs"],
+        correctIndex: 1,
+        fact: "Birds evolved from small, feathered bipedal theropod dinosaurs during the Jurassic period, making them surviving avian dinosaurs."
+      },
+      {
+        id: 30,
+        category: 'evolution',
+        categoryLabel: 'Evolution & Science',
+        icon: 'fa-dna',
+        question: "What 150-million-year-old fossil with feathers, teeth, and a bony tail provided early evidence of transitional forms between non-avian dinosaurs and birds?",
+        choices: ["Archaeopteryx", "Tiktaalik", "Pelycosaur", "Dimetrodon"],
+        correctIndex: 0,
+        fact: "Discovered in 1861 in the Solnhofen limestone of Germany, Archaeopteryx possessed avian wings and feathers alongside dinosaurian teeth, claws, and a skeletal tail."
+      },
+      {
+        id: 31,
+        category: 'evolution',
+        categoryLabel: 'Evolution & Science',
+        icon: 'fa-dna',
+        question: "What evolutionary phenomenon occurs when unrelated species independently evolve similar traits due to adapting to similar ecological niches?",
+        choices: ["Convergent evolution", "Adaptive radiation", "Genetic drift", "Sympatric speciation"],
+        correctIndex: 0,
+        fact: "Convergent evolution explains why dolphins (mammals), sharks (fish), and ichthyosaurs (reptiles) developed nearly identical hydrodynamic body shapes."
+      },
+      {
+        id: 32,
+        category: 'evolution',
+        categoryLabel: 'Evolution & Science',
+        icon: 'fa-dna',
+        question: "Approximately how many millions of years ago did the Cretaceous-Paleogene (K-Pg) mass extinction event wipe out non-avian dinosaurs?",
+        choices: ["252 million years ago", "66 million years ago", "12 million years ago", "443 million years ago"],
+        correctIndex: 1,
+        fact: "Roughly 66 million years ago, a massive asteroid impact at Chicxulub on the Yucatán Peninsula triggered widespread climate collapse and the K-Pg extinction."
+      },
+      {
+        id: 33,
+        category: 'evolution',
+        categoryLabel: 'Evolution & Science',
+        icon: 'fa-dna',
+        question: "Who is celebrated as the 'Father of Modern Genetics' for his mid-19th century hybridization experiments on garden pea plants?",
+        choices: ["Gregor Mendel", "Thomas Hunt Morgan", "Francis Crick", "Jean-Baptiste Lamarck"],
+        correctIndex: 0,
+        fact: "Augustinian friar Gregor Mendel deduced the fundamental laws of genetic inheritance (segregation and independent assortment) through seven pea plant traits."
+      },
+      {
+        id: 34,
+        category: 'evolution',
+        categoryLabel: 'Evolution & Science',
+        icon: 'fa-dna',
+        question: "What transitional fossil discovered in Arctic Canada in 2004 revealed how fish transitioned into four-limbed land animals (tetrapods)?",
+        choices: ["Tiktaalik roseae", "Coelacanth", "Ichthyostega", "Amphioxus"],
+        correctIndex: 0,
+        fact: "Tiktaalik lived ~375 million years ago and exhibited scales and fins, but also wrist bones, a flexible neck, and ribs capable of supporting lungs on land."
+      },
+      {
+        id: 35,
+        category: 'evolution',
+        categoryLabel: 'Evolution & Science',
+        icon: 'fa-dna',
+        question: "Genetic evidence reveals that modern humans outside sub-Saharan Africa carry roughly 1% to 2% DNA inherited from which archaic human species?",
+        choices: ["Neanderthals", "Homo floresiensis", "Homo naledi", "Australopithecus africanus"],
+        correctIndex: 0,
+        fact: "Svante Pääbo and paleogeneticists sequenced the Neanderthal genome, proving interbreeding occurred between modern Homo sapiens and Neanderthals ~50,000 years ago."
+      },
+      {
+        id: 36,
+        category: 'evolution',
+        categoryLabel: 'Evolution & Science',
+        icon: 'fa-dna',
+        question: "The human tailbone (coccyx) and the appendix are classic examples of which anatomical structures?",
+        choices: ["Vestigial structures", "Homologous analogies", "Exaptations", "Atavisms"],
+        correctIndex: 0,
+        fact: "Vestigial organs are anatomical remnants that have lost most or all of their ancestral functions through gradual evolutionary divergence."
+      },
+      {
+        id: 37,
+        category: 'evolution',
+        categoryLabel: 'Evolution & Science',
+        icon: 'fa-dna',
+        question: "What biological process explains how mitochondria and chloroplasts originated as free-living prokaryotes engulfed by ancestral eukaryotic cells?",
+        choices: ["Endosymbiosis", "Cellular Meiosis", "Horizontal Gene Transfer", "Biogenesis"],
+        correctIndex: 0,
+        fact: "Pioneered by Lynn Margulis, the endosymbiotic theory explains that mitochondria retain their own distinct circular DNA, resembling ancestral proteobacteria."
+      },
+      {
+        id: 38,
+        category: 'evolution',
+        categoryLabel: 'Evolution & Science',
+        icon: 'fa-dna',
+        question: "Which Pacific island archipelago's distinct species of finches and giant tortoises fundamentally inspired Charles Darwin's evolutionary concepts?",
+        choices: ["Galápagos Islands", "Hawaiian Islands", "Fiji Islands", "Canary Islands"],
+        correctIndex: 0,
+        fact: "Darwin observed in 1835 that Galápagos finch species had evolved distinctly adapted beak morphologies on separate islands to exploit specific food sources."
+      },
+
+      // --- HISTORICAL SITES & WONDERS (12) ---
+      {
+        id: 39,
+        category: 'sites',
+        categoryLabel: 'Historical Sites & Landmarks',
+        icon: 'fa-monument',
+        question: "Which of the Seven Wonders of the Ancient World is the only one that remains largely intact to this day?",
+        choices: ["Lighthouse of Alexandria", "Great Pyramid of Giza", "Colossus of Rhodes", "Hanging Gardens of Babylon"],
+        correctIndex: 1,
+        fact: "Constructed as a tomb for Pharaoh Khufu around 2560 BC, the Great Pyramid of Giza stood as humanity's tallest man-made structure for over 3,800 years."
+      },
+      {
+        id: 40,
+        category: 'sites',
+        categoryLabel: 'Historical Sites & Landmarks',
+        icon: 'fa-monument',
+        question: "The ancient rock-carved city of Petra, famed for the Treasury building ('Al-Khazneh'), was built by which civilization?",
+        choices: ["Nabataeans", "Phoenicians", "Assyrians", "Persians"],
+        correctIndex: 0,
+        fact: "Carved directly into red sandstone cliffs in southwestern Jordan, Petra was the bustling trade capital of the nomadic Nabataean Kingdom around the 1st century BC."
+      },
+      {
+        id: 41,
+        category: 'sites',
+        categoryLabel: 'Historical Sites & Landmarks',
+        icon: 'fa-monument',
+        question: "Located in modern-day Turkey, what site is recognized as the world's oldest known monumental temple complex, dating back to roughly 9500 BC?",
+        choices: ["Göbekli Tepe", "Çatalhöyük", "Derinkuyu", "Hattusa"],
+        correctIndex: 0,
+        fact: "Predating Stonehenge and agriculture by thousands of years, Göbekli Tepe features massive circular enclosures with 20-ton T-shaped limestone pillars carved with wild animals."
+      },
+      {
+        id: 42,
+        category: 'sites',
+        categoryLabel: 'Historical Sites & Landmarks',
+        icon: 'fa-monument',
+        question: "Machu Picchu, the 15th-century mountain citadel perched high in the Andes, was constructed during the height of which empire?",
+        choices: ["Inca Empire", "Aztec Empire", "Maya Empire", "Toltec Empire"],
+        correctIndex: 0,
+        fact: "Built under Emperor Pachacuti around 1450 AD at 2,430 meters elevation in Peru, Machu Picchu showcases dry-stone ashlar masonry without mortar."
+      },
+      {
+        id: 43,
+        category: 'sites',
+        categoryLabel: 'Historical Sites & Landmarks',
+        icon: 'fa-monument',
+        question: "Which colossal stone monument on Salisbury Plain in Wiltshire, England was erected in phases between 3000 BC and 2000 BC?",
+        choices: ["Stonehenge", "Carnac Stones", "Newgrange", "Callanish Stones"],
+        correctIndex: 0,
+        fact: "Stonehenge incorporates massive 25-ton sarsen stones and bluestones transported hundreds of miles from Wales, meticulously aligned with summer and winter solstices."
+      },
+      {
+        id: 44,
+        category: 'sites',
+        categoryLabel: 'Historical Sites & Landmarks',
+        icon: 'fa-monument',
+        question: "In which country can you visit Angkor Wat, the largest religious religious temple complex by area in the world?",
+        choices: ["Cambodia", "Thailand", "Vietnam", "Indonesia"],
+        correctIndex: 0,
+        fact: "Constructed by King Suryavarman II in the early 12th century as a Hindu temple dedicated to Vishnu, Angkor Wat transformed into a Buddhist complex."
+      },
+      {
+        id: 45,
+        category: 'sites',
+        categoryLabel: 'Historical Sites & Landmarks',
+        icon: 'fa-monument',
+        question: "The subterranean Mausoleum of the First Qin Emperor in Xi'an, China, famously contains thousands of life-sized sculptures known as what?",
+        choices: ["The Terracotta Army", "The Jade Warriors", "The Bronze Sentinels", "The Forbidden Guard"],
+        correctIndex: 0,
+        fact: "Discovered by farmers digging a well in 1974, the Terracotta Army comprises over 8,000 unique clay soldiers, horses, and chariots built to guard Qin Shi Huang in the afterlife."
+      },
+      {
+        id: 46,
+        category: 'sites',
+        categoryLabel: 'Historical Sites & Landmarks',
+        icon: 'fa-monument',
+        question: "What iconic amphitheater in Rome, inaugurated by Emperor Titus in 80 AD, could seat over 50,000 spectators for gladiatorial spectacles?",
+        choices: ["The Colosseum (Flavian Amphitheatre)", "The Circus Maximus", "The Pantheon", "The Roman Forum"],
+        correctIndex: 0,
+        fact: "Originally commissioned by Emperor Vespasian of the Flavian dynasty, the Colosseum featured a complex hypogeum (subterranean tunnels, lifts, and cages for beasts)."
+      },
+      {
+        id: 47,
+        category: 'sites',
+        categoryLabel: 'Historical Sites & Landmarks',
+        icon: 'fa-monument',
+        question: "The Parthenon, a temple dedicated to the goddess Athena on the Acropolis, was constructed in which ancient city-state?",
+        choices: ["Athens", "Sparta", "Corinth", "Thebes"],
+        correctIndex: 0,
+        fact: "Built between 447 and 432 BC during the Delian League's height under Pericles, the Parthenon remains the zenith of classical Doric architecture."
+      },
+      {
+        id: 48,
+        category: 'sites',
+        categoryLabel: 'Historical Sites & Landmarks',
+        icon: 'fa-monument',
+        question: "Easter Island (Rapa Nui), famous for its monumental monolithic stone statues called Moai, is a special territory of which South American nation?",
+        choices: ["Chile", "Peru", "Argentina", "Ecuador"],
+        correctIndex: 0,
+        fact: "Located in Polynesia over 2,000 miles west of the Chilean mainland, Rapa Nui was annexed by Chile in 1888 and contains nearly 1,000 carved volcanic tuff moai."
+      },
+      {
+        id: 49,
+        category: 'sites',
+        categoryLabel: 'Historical Sites & Landmarks',
+        icon: 'fa-monument',
+        question: "Hagia Sophia, renowned for its massive central dome and changing roles across Orthodox cathedral, Catholic church, and mosque, is in which city?",
+        choices: ["Istanbul", "Athens", "Alexandria", "Jerusalem"],
+        correctIndex: 0,
+        fact: "Completed in 537 AD under Byzantine Emperor Justinian I in Constantinople (now Istanbul), Hagia Sophia was the world's largest cathedral for nearly a millennium."
+      },
+      {
+        id: 50,
+        category: 'sites',
+        categoryLabel: 'Historical Sites & Landmarks',
+        icon: 'fa-monument',
+        question: "The Taj Mahal, an ivory-white marble mausoleum on the south bank of the Yamuna River, was commissioned by which Mughal Emperor for his favorite wife?",
+        choices: ["Shah Jahan", "Akbar the Great", "Babur", "Aurangzeb"],
+        correctIndex: 0,
+        fact: "Emperor Shah Jahan commissioned the Taj Mahal in Agra in 1632 to house the tomb of Mumtaz Mahal. It represents the pinnacle of Indo-Islamic architecture."
+      }
+    ];
+
+    /* =====================================================================
+       2. WEB AUDIO API SOUND SYSTEM
+       ===================================================================== */
+    let audioCtx = null;
+    let sfxEnabled = true;
+
+    function getAudioContext() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) {
+          audioCtx = new AudioContextClass();
+        }
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    function toggleAudio() {
+      sfxEnabled = !sfxEnabled;
+      const icon = document.getElementById('soundIcon');
+      const text = document.getElementById('soundStatusText');
+      if (sfxEnabled) {
+        icon.className = 'fa-solid fa-volume-high text-amber-400';
+        text.innerText = 'SFX On';
+        playTone(520, 'sine', 0.1);
+      } else {
+        icon.className = 'fa-solid fa-volume-xmark text-slate-500';
+        text.innerText = 'SFX Off';
+      }
+    }
+
+    function playTone(freq, type = 'sine', duration = 0.12, gainLevel = 0.15) {
+      if (!sfxEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        if (!ctx) return;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, ctx.currentTime);
+        gain.gain.setValueAtTime(gainLevel, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + duration);
+      } catch (e) {
+        // audio fail silent
+      }
+    }
+
+    function soundCorrect() {
+      if (!sfxEnabled) return;
+      playTone(587.33, 'triangle', 0.1, 0.15); // D5
+      setTimeout(() => playTone(880, 'sine', 0.25, 0.2), 90); // A5
+    }
+
+    function soundIncorrect() {
+      if (!sfxEnabled) return;
+      playTone(220, 'sawtooth', 0.2, 0.15); // A3
+      setTimeout(() => playTone(180, 'sawtooth', 0.3, 0.15), 110);
+    }
+
+    function soundStreak() {
+      if (!sfxEnabled) return;
+      playTone(659.25, 'triangle', 0.08, 0.15);
+      setTimeout(() => playTone(830.61, 'sine', 0.08, 0.18), 70);
+      setTimeout(() => playTone(1046.50, 'sine', 0.2, 0.2), 140);
+    }
+
+    function soundFanfare() {
+      if (!sfxEnabled) return;
+      const notes = [523.25, 659.25, 783.99, 1046.50];
+      notes.forEach((freq, idx) => {
+        setTimeout(() => playTone(freq, 'triangle', 0.25, 0.18), idx * 110);
+      });
+    }
+
+    /* =====================================================================
+       3. STATE MANAGEMENT
+       ===================================================================== */
+    let currentMode = 'marathon'; // 'marathon' (50), 'quick' (20), 'custom'
+    let customCategory = 'motoring';
+    let activeQuestions = [];
+    let currentIndex = 0;
+    let score = 0;
+    let currentStreak = 0;
+    let bestStreak = 0;
+    let userAnswers = []; // records { question, chosenIndex, isCorrect }
+    let answeredCurrent = false;
+
+    // Shuffle helper
+    function shuffleArray(arr) {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function updateModeSelection() {
+      const radios = document.getElementsByName('quizMode');
+      for (const r of radios) {
+        if (r.checked) {
+          currentMode = r.value;
+          break;
+        }
+      }
+      const catPicker = document.getElementById('categoryPickerContainer');
+      if (currentMode === 'custom') {
+        catPicker.classList.remove('hidden');
+      } else {
+        catPicker.classList.add('hidden');
+      }
+    }
+
+    function selectFocusCategory(catKey, btn) {
+      customCategory = catKey;
+      document.querySelectorAll('.cat-pill').forEach(el => {
+        el.className = 'cat-pill px-3 py-2.5 rounded-xl border border-slate-700 bg-slate-800/70 text-xs font-medium text-slate-300 hover:text-white text-center flex items-center justify-center gap-1.5 transition';
+      });
+      btn.className = 'cat-pill active-cat px-3 py-2.5 rounded-xl border border-amber-500/50 bg-amber-500/20 text-xs font-bold text-amber-200 text-center flex items-center justify-center gap-1.5 transition';
+    }
+
+    function startQuiz() {
+      getAudioContext(); // user activation
+      hideAllModals();
+
+      // Filter and set questions based on mode
+      let pool = [];
+      if (currentMode === 'marathon') {
+        pool = shuffleArray(QUESTION_BANK);
+      } else if (currentMode === 'quick') {
+        pool = shuffleArray(QUESTION_BANK).slice(0, 20);
+      } else {
+        pool = shuffleArray(QUESTION_BANK.filter(q => q.category === customCategory));
+      }
+
+      activeQuestions = pool;
+      currentIndex = 0;
+      score = 0;
+      currentStreak = 0;
+      bestStreak = 0;
+      userAnswers = [];
+      answeredCurrent = false;
+
+      // Update UI elements
+      document.getElementById('totalQuestionsNum').innerText = activeQuestions.length;
+      document.getElementById('scoreDisplay').innerText = score;
+      document.getElementById('streakCount').innerText = currentStreak;
+
+      document.getElementById('welcomeScreen').classList.add('hidden');
+      document.getElementById('resultScreen').classList.add('hidden');
+      document.getElementById('quizScreen').classList.remove('hidden');
+
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      answeredCurrent = false;
+      const q = activeQuestions[currentIndex];
+      
+      // Update Question Counters & Progress
+      document.getElementById('currentQuestionNum').innerText = currentIndex + 1;
+      const pct = Math.round(((currentIndex) / activeQuestions.length) * 100);
+      document.getElementById('progressBar').style.width = `${Math.max(2, pct)}%`;
+
+      // Category badge
+      const badge = document.getElementById('categoryBadge');
+      badge.innerHTML = `<i class="fa-solid ${q.icon}"></i> ${q.categoryLabel}`;
+
+      // Question text
+      document.getElementById('questionText').innerText = q.question;
+
+      // Hide Fact snippet
+      const factBox = document.getElementById('factBox');
+      factBox.classList.add('hidden');
+      factBox.classList.remove('border-emerald-500/40', 'border-rose-500/40');
+
+      // Next Button disabled
+      const nextBtn = document.getElementById('nextBtn');
+      nextBtn.disabled = true;
+      document.getElementById('nextBtnLabel').innerText = (currentIndex === activeQuestions.length - 1) ? 'View Final Results' : 'Next Question';
+
+      // Render 4 Choices
+      const grid = document.getElementById('choicesGrid');
+      grid.innerHTML = '';
+      const letters = ['A', 'B', 'C', 'D'];
+
+      q.choices.forEach((choice, index) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.id = `choiceBtn_${index}`;
+        btn.className = `choice-card text-left p-4 sm:p-5 rounded-2xl border-2 border-slate-800 bg-slate-800/50 hover:bg-slate-800 hover:border-slate-700 text-slate-200 flex items-center gap-3.5 transition group`;
+        btn.onclick = () => handleChoice(index);
+
+        btn.innerHTML = `
+          <span class="w-8 h-8 rounded-xl bg-slate-700/70 text-slate-300 group-hover:bg-amber-500 group-hover:text-slate-950 font-black text-xs flex items-center justify-center flex-shrink-0 transition">
+            ${letters[index]}
+          </span>
+          <span class="text-sm sm:text-base font-medium flex-grow leading-tight">${choice}</span>
+          <span id="choiceIcon_${index}" class="text-base flex-shrink-0 opacity-0 transition"></span>
+        `;
+        grid.appendChild(btn);
+      });
+    }
+
+    function handleChoice(chosenIndex) {
+      if (answeredCurrent) return;
+      answeredCurrent = true;
+
+      const q = activeQuestions[currentIndex];
+      const isCorrect = (chosenIndex === q.correctIndex);
+      const factBox = document.getElementById('factBox');
+      const factText = document.getElementById('factSnippetText');
+      const nextBtn = document.getElementById('nextBtn');
+
+      userAnswers.push({
+        question: q,
+        chosenIndex: chosenIndex,
+        isCorrect: isCorrect
+      });
+
+      // Disable all choices & highlight states
+      for (let i = 0; i < q.choices.length; i++) {
+        const btn = document.getElementById(`choiceBtn_${i}`);
+        const iconSpan = document.getElementById(`choiceIcon_${i}`);
+        btn.disabled = true;
+
+        if (i === q.correctIndex) {
+          btn.className = 'choice-card text-left p-4 sm:p-5 rounded-2xl border-2 border-emerald-500 bg-emerald-950/40 text-emerald-100 flex items-center gap-3.5 shadow-lg shadow-emerald-500/10';
+          iconSpan.innerHTML = '<i class="fa-solid fa-circle-check text-emerald-400"></i>';
+          iconSpan.classList.remove('opacity-0');
+        } else if (i === chosenIndex && !isCorrect) {
+          btn.className = 'choice-card text-left p-4 sm:p-5 rounded-2xl border-2 border-rose-500 bg-rose-950/40 text-rose-200 flex items-center gap-3.5';
+          iconSpan.innerHTML = '<i class="fa-solid fa-circle-xmark text-rose-400"></i>';
+          iconSpan.classList.remove('opacity-0');
+        } else {
+          btn.className = 'choice-card text-left p-4 sm:p-5 rounded-2xl border-2 border-slate-800/40 bg-slate-900/30 text-slate-500 opacity-60 flex items-center gap-3.5';
+        }
+      }
+
+      // Points & Streaks
+      if (isCorrect) {
+        currentStreak++;
+        if (currentStreak > bestStreak) bestStreak = currentStreak;
+        
+        // Base points + streak multiplier bonus
+        const streakBonus = (currentStreak - 1) * 25;
+        const awarded = 100 + streakBonus;
+        score += awarded;
+
+        if (currentStreak > 1 && currentStreak % 3 === 0) {
+          soundStreak();
+        } else {
+          soundCorrect();
+        }
+
+        factBox.classList.add('border-emerald-500/30', 'bg-emerald-950/20');
+      } else {
+        currentStreak = 0;
+        soundIncorrect();
+        factBox.classList.add('border-rose-500/30', 'bg-rose-950/20');
+      }
+
+      // Update HUD
+      document.getElementById('scoreDisplay').innerText = score;
+      document.getElementById('streakCount').innerText = currentStreak;
+
+      // Show Fact Explanation
+      factText.innerHTML = `<strong>${isCorrect ? 'Correct! ' : 'Notice: '}</strong>` + q.fact;
+      factBox.classList.remove('hidden');
+
+      // Enable Next
+      nextBtn.disabled = false;
+      nextBtn.focus();
+    }
+
+    function nextQuestion() {
+      if (!answeredCurrent) return;
+
+      currentIndex++;
+      if (currentIndex < activeQuestions.length) {
+        renderQuestion();
+      } else {
+        showResults();
+      }
+    }
+
+    /* =====================================================================
+       4. RESULTS, MEDAL RANKING, & STATS
+       ===================================================================== */
+    function showResults() {
+      soundFanfare();
+
+      document.getElementById('quizScreen').classList.add('hidden');
+      document.getElementById('resultScreen').classList.remove('hidden');
+
+      const total = activeQuestions.length;
+      const correctCount = userAnswers.filter(a => a.isCorrect).length;
+      const accuracyPercent = Math.round((correctCount / total) * 100);
+
+      // Populate metrics
+      document.getElementById('finalScoreVal').innerText = score;
+      document.getElementById('finalAccuracyVal').innerText = `${accuracyPercent}%`;
+      document.getElementById('finalCorrectCount').innerText = `${correctCount} / ${total}`;
+      document.getElementById('finalBestStreak').innerText = bestStreak;
+
+      // Medals & Ranks calculation (Strictly as specified:
+      // Top 30% (71-100%): Gold
+      // Second 30% (41-70%): Silver
+      // Bottom 40% (0-40%): Bronze
+      const medalIcon = document.getElementById('medalIconWrap');
+      const tierName = document.getElementById('medalTierName');
+      const rankTitle = document.getElementById('rankTitle');
+      const rankSubtitle = document.getElementById('rankSubtitle');
+      const glowBg = document.getElementById('medalGlowBg');
+
+      if (accuracyPercent >= 71) {
+        // GOLD MEDAL
+        medalIcon.innerText = '🥇';
+        medalIcon.className = 'w-24 h-24 mx-auto rounded-3xl bg-amber-500/20 border-2 border-amber-500/50 flex items-center justify-center text-5xl shadow-xl shadow-amber-500/20 animate-bounce-slow';
+        tierName.innerText = 'Gold Medal Tier (Top 30%)';
+        tierName.className = 'text-xs uppercase font-extrabold tracking-widest text-amber-400';
+        rankTitle.innerText = 'Grand Master Historian';
+        rankSubtitle.innerText = 'Extraordinary achievement! You placed firmly in the elite Gold tier with profound mastery of science, evolution, motoring history, and ancient wonders.';
+        glowBg.className = 'absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-amber-500/20 rounded-full blur-3xl pointer-events-none';
+      } else if (accuracyPercent >= 41) {
+        // SILVER MEDAL
+        medalIcon.innerText = '🥈';
+        medalIcon.className = 'w-24 h-24 mx-auto rounded-3xl bg-slate-400/20 border-2 border-slate-300/50 flex items-center justify-center text-5xl shadow-xl shadow-slate-400/20';
+        tierName.innerText = 'Silver Medal Tier (Middle 30%)';
+        tierName.className = 'text-xs uppercase font-extrabold tracking-widest text-slate-300';
+        rankTitle.innerText = 'Adept Scholar';
+        rankSubtitle.innerText = 'Solid performance! You demonstrated commendable knowledge across diverse epochs. A little more revision in weaker categories will push you to Gold!';
+        glowBg.className = 'absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-slate-300/15 rounded-full blur-3xl pointer-events-none';
+      } else {
+        // BRONZE MEDAL
+        medalIcon.innerText = '🥉';
+        medalIcon.className = 'w-24 h-24 mx-auto rounded-3xl bg-amber-800/20 border-2 border-amber-700/50 flex items-center justify-center text-5xl shadow-xl shadow-amber-800/20';
+        tierName.innerText = 'Bronze Medal Tier (Bottom 40%)';
+        tierName.className = 'text-xs uppercase font-extrabold tracking-widest text-amber-600';
+        rankTitle.innerText = 'Curious Apprentice';
+        rankSubtitle.innerText = 'A respectable start! You encountered some of history and science\'s trickiest landmarks and milestones. Dive into the review tab to discover the full facts.';
+        glowBg.className = 'absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-amber-800/15 rounded-full blur-3xl pointer-events-none';
+      }
+
+      // Generate Domain Breakdown Stats
+      renderCategoryStats();
+      renderReviewModalList();
+    }
+
+    function renderCategoryStats() {
+      const statsGrid = document.getElementById('categoryStatsGrid');
+      statsGrid.innerHTML = '';
+
+      const cats = [
+        { key: 'motoring', label: 'Motoring History', icon: 'fa-car' },
+        { key: 'events', label: 'World Events', icon: 'fa-earth-americas' },
+        { key: 'evolution', label: 'Evolution & Science', icon: 'fa-dna' },
+        { key: 'sites', label: 'Historical Sites', icon: 'fa-monument' }
+      ];
+
+      cats.forEach(c => {
+        const catQuestions = userAnswers.filter(a => a.question.category === c.key);
+        if (catQuestions.length === 0) return;
+
+        const catCorrect = catQuestions.filter(a => a.isCorrect).length;
+        const pct = Math.round((catCorrect / catQuestions.length) * 100);
+
+        const card = document.createElement('div');
+        card.className = 'p-3 rounded-2xl bg-slate-800/40 border border-slate-700/50 space-y-2';
+        card.innerHTML = `
+          <div class="flex items-center justify-between text-xs">
+            <span class="font-medium text-slate-300 flex items-center gap-1.5">
+              <i class="fa-solid ${c.icon} text-amber-400"></i> ${c.label}
+            </span>
+            <span class="font-bold text-white">${catCorrect}/${catQuestions.length} (${pct}%)</span>
+          </div>
+          <div class="w-full bg-slate-700/50 h-1.5 rounded-full overflow-hidden">
+            <div class="bg-amber-400 h-full rounded-full" style="width: ${pct}%"></div>
+          </div>
+        `;
+        statsGrid.appendChild(card);
+      });
+    }
+
+    function renderReviewModalList() {
+      const list = document.getElementById('reviewList');
+      list.innerHTML = '';
+      const letters = ['A', 'B', 'C', 'D'];
+
+      userAnswers.forEach((item, idx) => {
+        const q = item.question;
+        const card = document.createElement('div');
+        card.className = `p-4 rounded-2xl border ${item.isCorrect ? 'border-emerald-500/30 bg-emerald-950/10' : 'border-rose-500/30 bg-rose-950/10'} space-y-3`;
+
+        const chosenText = q.choices[item.chosenIndex] || 'None';
+        const rightText = q.choices[q.correctIndex];
+
+        card.innerHTML = `
+          <div class="flex items-start justify-between gap-3">
+            <div class="space-y-1">
+              <span class="text-[11px] font-bold uppercase tracking-wider ${item.isCorrect ? 'text-emerald-400' : 'text-rose-400'}">
+                <i class="fa-solid ${item.isCorrect ? 'fa-circle-check' : 'fa-circle-xmark'}"></i> Question ${idx + 1} • ${q.categoryLabel}
+              </span>
+              <h5 class="text-sm font-semibold text-slate-100">${q.question}</h5>
+            </div>
+            <span class="px-2.5 py-1 rounded-lg text-xs font-bold ${item.isCorrect ? 'bg-emerald-500/20 text-emerald-300' : 'bg-rose-500/20 text-rose-300'}">
+              ${item.isCorrect ? 'Correct' : 'Incorrect'}
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1">
+            <div class="p-2.5 rounded-xl bg-slate-800/80 border border-slate-700/60">
+              <span class="text-slate-400 block text-[10px] uppercase font-bold">Your Choice</span>
+              <span class="font-medium ${item.isCorrect ? 'text-emerald-300' : 'text-rose-300'}">
+                ${letters[item.chosenIndex]}: ${chosenText}
+              </span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-slate-800/80 border border-slate-700/60">
+              <span class="text-slate-400 block text-[10px] uppercase font-bold">Correct Answer</span>
+              <span class="font-medium text-emerald-300">
+                ${letters[q.correctIndex]}: ${rightText}
+              </span>
+            </div>
+          </div>
+
+          <p class="text-xs text-slate-300 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
+            <i class="fa-solid fa-lightbulb text-amber-400 mr-1"></i> ${q.fact}
+          </p>
+        `;
+        list.appendChild(card);
+      });
+    }
+
+    function showHomeScreen() {
+      hideAllModals();
+      document.getElementById('quizScreen').classList.add('hidden');
+      document.getElementById('resultScreen').classList.add('hidden');
+      document.getElementById('welcomeScreen').classList.remove('hidden');
+    }
+
+    function toggleReviewModal() {
+      const modal = document.getElementById('reviewModal');
+      modal.classList.toggle('hidden');
+    }
+
+    function toggleHelpModal() {
+      const modal = document.getElementById('helpModal');
+      modal.classList.toggle('hidden');
+    }
+
+    function hideAllModals() {
+      document.getElementById('reviewModal').classList.add('hidden');
+      document.getElementById('helpModal').classList.add('hidden');
+    }
+
+    /* =====================================================================
+       5. KEYBOARD ACCESSIBILITY CONTROLS
+       ===================================================================== */
+    window.addEventListener('keydown', (e) => {
+      // If modal is open, let Escape close it
+      if (e.key === 'Escape') {
+        hideAllModals();
+        return;
+      }
+
+      // Check if quiz screen is actively visible
+      const quizScreen = document.getElementById('quizScreen');
+      if (quizScreen.classList.contains('hidden')) return;
+
+      const key = e.key.toUpperCase();
+
+      // Keyboard choices: A/1, B/2, C/3, D/4
+      if (!answeredCurrent) {
+        if (key === 'A' || key === '1') handleChoice(0);
+        else if (key === 'B' || key === '2') handleChoice(1);
+        else if (key === 'C' || key === '3') handleChoice(2);
+        else if (key === 'D' || key === '4') handleChoice(3);
+      } else {
+        // If already answered, Enter or Space advances
+        if (key === 'ENTER' || key === ' ') {
+          e.preventDefault();
+          nextQuestion();
+        }
+      }
+    });
+
+    // Ensure audio can warm up on user gesture
+    document.addEventListener('click', () => {
+      if (!audioCtx) getAudioContext();
+    }, { once: true });
+  </script>
+</body>
+</html>
