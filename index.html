@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chronos Trivia Master - 50 Questions Historical & Scientific Challenge</title>
+  <title>Chronos Trivia Master - 100 Questions Polymath Challenge</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- FontAwesome Icons -->
@@ -82,9 +82,9 @@
         </div>
         <div>
           <h1 class="font-bold text-lg leading-tight tracking-tight text-white flex items-center gap-2">
-            Chronos <span class="text-xs px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 font-semibold tracking-wider uppercase">Master Trivia</span>
+            Chronos <span class="text-xs px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 font-semibold tracking-wider uppercase">Century Edition</span>
           </h1>
-          <p class="text-xs text-slate-400">History • Motoring • Evolution • Sites</p>
+          <p class="text-xs text-slate-400">100 Inquiries • 9 Disciplines</p>
         </div>
       </div>
 
@@ -110,13 +110,13 @@
     <section id="welcomeScreen" class="w-full max-w-3xl mx-auto space-y-8 py-4">
       <div class="text-center space-y-4">
         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/90 border border-slate-700 text-xs text-slate-300 font-medium mb-1">
-          <i class="fa-solid fa-award text-amber-400"></i> Competitive Scoring & Medal Rank Hierarchy
+          <i class="fa-solid fa-award text-amber-400"></i> 100 Authentic Questions • 9 Custom Knowledge Fields
         </div>
         <h2 class="text-3xl sm:text-5xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-slate-100 via-amber-200 to-amber-500">
-          The Ultimate Curiosity Challenge
+          The Grand Polymath Challenge
         </h2>
         <p class="text-slate-400 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
-          Embark on a voyage spanning the dawn of species, classic automotive revolutions, turning points in world history, and iconic architectural wonders.
+          Traverse 100 deep-dive inquiries across physics, biological nature, iconic sports milestones, screen and music legends, global geography, historic monuments, and modern mechanics.
         </p>
       </div>
 
@@ -159,7 +159,7 @@
       <!-- Mode & Scope Selection -->
       <div class="p-6 rounded-3xl bg-slate-900/90 border border-slate-800 space-y-6 shadow-xl">
         <h3 class="text-base font-bold text-slate-200 flex items-center gap-2">
-          <i class="fa-solid fa-sliders text-amber-400"></i> Configure Your Round
+          <i class="fa-solid fa-sliders text-amber-400"></i> Configure Your Match
         </h3>
 
         <!-- Mode Selectors -->
@@ -167,39 +167,54 @@
           <label class="relative flex flex-col p-4 rounded-2xl border-2 cursor-pointer transition border-amber-500 bg-amber-500/10 has-[:checked]:border-amber-500 has-[:checked]:bg-amber-500/10 hover:border-slate-600">
             <input type="radio" name="quizMode" value="marathon" checked class="sr-only" onchange="updateModeSelection()">
             <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Grand Marathon</span>
+              <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Century Marathon</span>
               <i class="fa-solid fa-flag-checkered text-amber-400"></i>
             </div>
-            <span class="text-lg font-black text-white">All 50 Questions</span>
-            <span class="text-xs text-slate-400 mt-1">Ultimate test across all four distinct historic domains.</span>
+            <span class="text-lg font-black text-white">All 100 Questions</span>
+            <span class="text-xs text-slate-400 mt-1">The definitive endurance run across all 9 knowledge disciplines.</span>
           </label>
 
           <label class="relative flex flex-col p-4 rounded-2xl border-2 border-slate-800 bg-slate-800/40 cursor-pointer transition has-[:checked]:border-amber-500 has-[:checked]:bg-amber-500/10 hover:border-slate-700">
             <input type="radio" name="quizMode" value="quick" class="sr-only" onchange="updateModeSelection()">
             <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-bold uppercase tracking-wider text-sky-400">Quick Sprint</span>
+              <span class="text-xs font-bold uppercase tracking-wider text-sky-400">Curated Sprint</span>
               <i class="fa-solid fa-bolt text-sky-400"></i>
             </div>
-            <span class="text-lg font-black text-white">20 Questions</span>
-            <span class="text-xs text-slate-400 mt-1">A curated randomized sprint for rapid competitive play.</span>
+            <span class="text-lg font-black text-white">25 Questions</span>
+            <span class="text-xs text-slate-400 mt-1">A fast-paced randomized slice balanced across disciplines.</span>
           </label>
 
           <label class="relative flex flex-col p-4 rounded-2xl border-2 border-slate-800 bg-slate-800/40 cursor-pointer transition has-[:checked]:border-amber-500 has-[:checked]:bg-amber-500/10 hover:border-slate-700">
             <input type="radio" name="quizMode" value="custom" class="sr-only" onchange="updateModeSelection()">
             <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Category Focus</span>
+              <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Domain Focus</span>
               <i class="fa-solid fa-layer-group text-emerald-400"></i>
             </div>
-            <span class="text-lg font-black text-white">Single Field</span>
-            <span class="text-xs text-slate-400 mt-1">Focus strictly on one chosen subject matter.</span>
+            <span class="text-lg font-black text-white">Single Domain</span>
+            <span class="text-xs text-slate-400 mt-1">Isolate and play through your chosen category.</span>
           </label>
         </div>
 
-        <!-- Category Dropdown (for custom mode) -->
-        <div id="categoryPickerContainer" class="hidden pt-2 border-t border-slate-800/80">
-          <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Select Domain</label>
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-            <button type="button" onclick="selectFocusCategory('motoring', this)" class="cat-pill active-cat px-3 py-2.5 rounded-xl border border-amber-500/50 bg-amber-500/20 text-xs font-bold text-amber-200 text-center flex items-center justify-center gap-1.5 transition">
+        <!-- Category Dropdown Grid (for custom mode) -->
+        <div id="categoryPickerContainer" class="hidden pt-2 border-t border-slate-800/80 space-y-2">
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-400">Select Field</label>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            <button type="button" onclick="selectFocusCategory('science', this)" class="cat-pill active-cat px-3 py-2.5 rounded-xl border border-amber-500/50 bg-amber-500/20 text-xs font-bold text-amber-200 text-center flex items-center justify-center gap-1.5 transition">
+              <i class="fa-solid fa-flask"></i> Science
+            </button>
+            <button type="button" onclick="selectFocusCategory('nature', this)" class="cat-pill px-3 py-2.5 rounded-xl border border-slate-700 bg-slate-800/70 text-xs font-medium text-slate-300 hover:text-white text-center flex items-center justify-center gap-1.5 transition">
+              <i class="fa-solid fa-leaf"></i> Nature
+            </button>
+            <button type="button" onclick="selectFocusCategory('sport', this)" class="cat-pill px-3 py-2.5 rounded-xl border border-slate-700 bg-slate-800/70 text-xs font-medium text-slate-300 hover:text-white text-center flex items-center justify-center gap-1.5 transition">
+              <i class="fa-solid fa-medal"></i> Sport
+            </button>
+            <button type="button" onclick="selectFocusCategory('entertainment', this)" class="cat-pill px-3 py-2.5 rounded-xl border border-slate-700 bg-slate-800/70 text-xs font-medium text-slate-300 hover:text-white text-center flex items-center justify-center gap-1.5 transition">
+              <i class="fa-solid fa-film"></i> Entertainment
+            </button>
+            <button type="button" onclick="selectFocusCategory('geography', this)" class="cat-pill px-3 py-2.5 rounded-xl border border-slate-700 bg-slate-800/70 text-xs font-medium text-slate-300 hover:text-white text-center flex items-center justify-center gap-1.5 transition">
+              <i class="fa-solid fa-map-location-dot"></i> Geography
+            </button>
+            <button type="button" onclick="selectFocusCategory('motoring', this)" class="cat-pill px-3 py-2.5 rounded-xl border border-slate-700 bg-slate-800/70 text-xs font-medium text-slate-300 hover:text-white text-center flex items-center justify-center gap-1.5 transition">
               <i class="fa-solid fa-car"></i> Motoring
             </button>
             <button type="button" onclick="selectFocusCategory('events', this)" class="cat-pill px-3 py-2.5 rounded-xl border border-slate-700 bg-slate-800/70 text-xs font-medium text-slate-300 hover:text-white text-center flex items-center justify-center gap-1.5 transition">
@@ -229,10 +244,10 @@
         <div class="flex items-center justify-between text-xs sm:text-sm font-semibold">
           <div class="flex items-center gap-2">
             <span id="categoryBadge" class="px-3 py-1 rounded-full bg-slate-800 text-amber-300 border border-slate-700 flex items-center gap-1.5 font-bold uppercase tracking-wider text-[11px]">
-              <i class="fa-solid fa-tag"></i> Motoring History
+              <i class="fa-solid fa-tag"></i> Science
             </span>
             <span class="text-slate-400">
-              Q <strong id="currentQuestionNum" class="text-white text-sm">1</strong> of <span id="totalQuestionsNum" class="text-slate-300">50</span>
+              Q <strong id="currentQuestionNum" class="text-white text-sm">1</strong> of <span id="totalQuestionsNum" class="text-slate-300">100</span>
             </span>
           </div>
 
@@ -253,7 +268,7 @@
 
         <!-- Progress Track -->
         <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden p-0.5 border border-slate-700/50">
-          <div id="progressBar" class="bg-gradient-to-r from-amber-500 to-orange-500 h-full rounded-full transition-all duration-300 ease-out" style="width: 2%"></div>
+          <div id="progressBar" class="bg-gradient-to-r from-amber-500 to-orange-500 h-full rounded-full transition-all duration-300 ease-out" style="width: 1%"></div>
         </div>
       </div>
 
@@ -267,13 +282,13 @@
 
         <!-- Choices Grid (A, B, C, D) -->
         <div id="choicesGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
-          <!-- Dynamically populated choices -->
+          <!-- Populated dynamically -->
         </div>
 
         <!-- Reveal & Fact Snippet (Appears after answer) -->
-        <div id="factBox" class="hidden p-4 rounded-2xl bg-slate-800/80 border border-slate-700/70 transition space-y-1.5 animate-fadeIn">
+        <div id="factBox" class="hidden p-4 rounded-2xl bg-slate-800/80 border border-slate-700/70 transition space-y-1.5">
           <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-400">
-            <i class="fa-solid fa-lightbulb"></i> Historical Insight
+            <i class="fa-solid fa-lightbulb"></i> Essential Fact & Context
           </div>
           <p id="factSnippetText" class="text-sm text-slate-300 leading-relaxed">
             Explanation fact appears here.
@@ -283,7 +298,7 @@
         <!-- Action / Advance Controls -->
         <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
           <div class="text-xs text-slate-500 flex items-center gap-1.5">
-            <i class="fa-solid fa-circle-info"></i> Keyboard shortcut: press <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300 font-mono">A</kbd> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300 font-mono">B</kbd> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300 font-mono">C</kbd> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300 font-mono">D</kbd> or <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300 font-mono">Enter</kbd>
+            <i class="fa-solid fa-circle-info"></i> Keyboard shortcuts: <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300 font-mono">A</kbd> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300 font-mono">B</kbd> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300 font-mono">C</kbd> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300 font-mono">D</kbd> or <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300 font-mono">Enter</kbd>
           </div>
 
           <button id="nextBtn" onclick="nextQuestion()" disabled class="w-full sm:w-auto px-7 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 disabled:opacity-40 disabled:hover:bg-amber-500 text-slate-950 font-bold text-sm tracking-wide transition flex items-center justify-center gap-2 shadow-lg shadow-amber-500/10">
@@ -296,13 +311,10 @@
 
     <!-- SCREEN 3: RESULTS & MEDAL RANKING -->
     <section id="resultScreen" class="hidden w-full max-w-3xl mx-auto space-y-6">
-      <!-- Main Podium Card -->
       <div class="p-6 sm:p-10 rounded-3xl bg-slate-900 border border-slate-800 text-center relative overflow-hidden shadow-2xl">
-        <!-- Background subtle glow -->
         <div id="medalGlowBg" class="absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
         <div class="relative z-10 space-y-4">
-          <!-- Big Medal Icon -->
           <div id="medalIconWrap" class="w-24 h-24 mx-auto rounded-3xl bg-amber-500/20 border-2 border-amber-500/40 flex items-center justify-center text-5xl shadow-xl">
             🥇
           </div>
@@ -312,10 +324,10 @@
               Gold Medal Tier (Top 30%)
             </div>
             <h2 id="rankTitle" class="text-2xl sm:text-4xl font-black text-white mt-1">
-              Grand Master Historian
+              Grand Polymath Luminary
             </h2>
             <p id="rankSubtitle" class="text-sm text-slate-400 mt-2 max-w-md mx-auto">
-              Exceptional prowess! You demonstrated thorough mastery across classic automotive milestones, ancient sites, world events, and biological evolution.
+              Mastery confirmed across science, natural ecosystems, world sports, entertainment lore, and worldwide geography!
             </p>
           </div>
 
@@ -331,7 +343,7 @@
             </div>
             <div class="p-3.5 rounded-2xl bg-slate-800/60 border border-slate-700/60">
               <span class="text-xs text-slate-400 block font-medium">Correct</span>
-              <span id="finalCorrectCount" class="text-xl sm:text-2xl font-black text-white">0/50</span>
+              <span id="finalCorrectCount" class="text-xl sm:text-2xl font-black text-white">0/100</span>
             </div>
             <div class="p-3.5 rounded-2xl bg-slate-800/60 border border-slate-700/60">
               <span class="text-xs text-slate-400 block font-medium">Best Streak</span>
@@ -342,14 +354,14 @@
           <!-- Category Performance Breakdown -->
           <div class="pt-4 text-left max-w-2xl mx-auto space-y-3">
             <h4 class="text-xs uppercase tracking-wider font-bold text-slate-400 flex items-center gap-1.5">
-              <i class="fa-solid fa-chart-pie text-amber-400"></i> Domain Breakdown
+              <i class="fa-solid fa-chart-pie text-amber-400"></i> Field & Discipline Breakdown
             </h4>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="categoryStatsGrid">
-              <!-- Dynamically populated category badges with mini bars -->
+              <!-- Dynamically populated -->
             </div>
           </div>
 
-          <!-- Buttons -->
+          <!-- Action Buttons -->
           <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-6">
             <button onclick="startQuiz()" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-sm uppercase tracking-wider transition shadow-lg shadow-amber-500/20 flex items-center justify-center gap-2">
               <i class="fa-solid fa-rotate-right"></i> Play Again
@@ -399,7 +411,7 @@
     <div class="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-md p-6 shadow-2xl space-y-5">
       <div class="flex items-center justify-between border-b border-slate-800 pb-3">
         <h3 class="font-bold text-base text-white flex items-center gap-2">
-          <i class="fa-solid fa-circle-question text-amber-400"></i> Game Mechanics & Keys
+          <i class="fa-solid fa-circle-question text-amber-400"></i> Rules & Key Controls
         </h3>
         <button onclick="toggleHelpModal()" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center">
           <i class="fa-solid fa-xmark"></i>
@@ -411,7 +423,7 @@
         <ul class="list-disc pl-5 space-y-1 text-slate-400">
           <li><span class="text-amber-400 font-semibold">🥇 Gold Medal:</span> Top 30% performance (71% - 100%)</li>
           <li><span class="text-slate-300 font-semibold">🥈 Silver Medal:</span> Middle 30% performance (41% - 70%)</li>
-          <li><span class="text-amber-600 font-semibold">🥉 Bronze Medal:</span> Remaining 40% performance (0% - 40%)</li>
+          <li><span class="text-amber-600 font-semibold">🥉 Bronze Medal:</span> Bottom 40% performance (0% - 40%)</li>
         </ul>
 
         <p class="pt-2"><strong>Keyboard Controls:</strong></p>
@@ -424,33 +436,540 @@
         </div>
 
         <p class="pt-2 text-xs text-slate-400">
-          <strong>Streaks:</strong> Each consecutive right answer earns a scaling multiplier (+25 bonus points per streak count)!
+          <strong>Multiplier:</strong> Successive correct answers stack +25 bonus points per streak count!
         </p>
       </div>
 
       <button onclick="toggleHelpModal()" class="w-full py-2.5 rounded-xl bg-amber-500 text-slate-950 font-bold text-xs uppercase tracking-wider">
-        Got it!
+        Let's Play
       </button>
     </div>
   </div>
 
   <!-- Footer -->
   <footer class="border-t border-slate-900 bg-slate-950/80 py-4 text-center text-xs text-slate-500">
-    <p>Chronos Trivia Master • 50 Curated Inquiries into Human Ingenuity & Earth's History</p>
+    <p>Chronos Trivia Master • 100 Comprehensive Questions Across 9 Domains</p>
   </footer>
 
   <!-- SCRIPT LOGIC -->
   <script>
     /* =====================================================================
-       1. COMPLETE 50 QUESTIONS REPOSITORY
-       Categories:
-         - motoring (13 questions)
-         - events (13 questions)
-         - evolution (12 questions)
-         - sites (12 questions)
-       Total = 50 Questions
+       FULL 100 QUESTIONS REPOSITORY
+       Existing: motoring (13), events (13), evolution (12), sites (12) [50 total]
+       New additions: science (10), nature (10), sport (10), entertainment (10), geography (10) [50 total]
+       Grand Total = 100 Questions
        ===================================================================== */
     const QUESTION_BANK = [
+      // --- 1. GENERAL SCIENCE (10 Questions) ---
+      {
+        id: 51,
+        category: 'science',
+        categoryLabel: 'General Science',
+        icon: 'fa-flask',
+        question: "Which chemical element possesses the highest electrical and thermal conductivity of any known metal?",
+        choices: ["Copper", "Silver", "Gold", "Aluminum"],
+        correctIndex: 1,
+        fact: "Silver possesses the highest electrical conductivity (63.0 × 10^6 S/m) and highest thermal conductivity of any metal, surpassing copper."
+      },
+      {
+        id: 52,
+        category: 'science',
+        categoryLabel: 'General Science',
+        icon: 'fa-flask',
+        question: "What is the only state of matter that displays zero electrical resistance and expels magnetic fields via the Meissner effect?",
+        choices: ["Plasma", "Superconductor", "Bose-Einstein Condensate", "Superfluid"],
+        correctIndex: 1,
+        fact: "Discovered by Heike Kamerlingh Onnes in 1911, superconductors conduct direct electric current with zero resistance when cooled below their critical temperature."
+      },
+      {
+        id: 53,
+        category: 'science',
+        categoryLabel: 'General Science',
+        icon: 'fa-flask',
+        question: "Approximately how long does it take for sunlight to travel across space and reach the surface of the Earth?",
+        choices: ["8 minutes and 20 seconds", "1 minute and 45 seconds", "14 minutes and 10 seconds", "Instantaneous"],
+        correctIndex: 0,
+        fact: "Traveling at roughly 299,792 km/s across an average astronomical unit of ~149.6 million km, sunlight takes approximately 499 seconds (8 min 20 sec) to reach Earth."
+      },
+      {
+        id: 54,
+        category: 'science',
+        categoryLabel: 'General Science',
+        icon: 'fa-flask',
+        question: "Which fundamental subatomic particle mediates the electromagnetic force in quantum electrodynamics?",
+        choices: ["Gluon", "Photon", "W Boson", "Graviton"],
+        correctIndex: 1,
+        fact: "The photon is the gauge boson responsible for mediating electromagnetic interactions across atoms, light, and magnetic fields."
+      },
+      {
+        id: 55,
+        category: 'science',
+        categoryLabel: 'General Science',
+        icon: 'fa-flask',
+        question: "What is the primary gas composing the thick, heat-trapping atmosphere of Venus?",
+        choices: ["Methane", "Carbon Dioxide", "Sulfuric Acid", "Nitrogen"],
+        correctIndex: 1,
+        fact: "Venus's atmosphere is over 96% carbon dioxide, driving a runaway greenhouse effect with surface temperatures soaring to 465°C."
+      },
+      {
+        id: 56,
+        category: 'science',
+        categoryLabel: 'General Science',
+        icon: 'fa-flask',
+        question: "What is the value of absolute zero expressed on the Celsius temperature scale?",
+        choices: ["-273.15°C", "-312.50°C", "-210.00°C", "-459.67°C"],
+        correctIndex: 0,
+        fact: "Absolute zero represents the lowest limit of the thermodynamic temperature scale where entropy reaches its minimum, corresponding to -273.15°C (0 Kelvin)."
+      },
+      {
+        id: 57,
+        category: 'science',
+        categoryLabel: 'General Science',
+        icon: 'fa-flask',
+        question: "Which Danish physicist proposed the revolutionary 1913 model of the atom with quantized electron orbits?",
+        choices: ["Ernest Rutherford", "Niels Bohr", "Max Planck", "Werner Heisenberg"],
+        correctIndex: 1,
+        fact: "Niels Bohr introduced electron energy levels, correctly explaining Rydberg's formula for the spectral emission lines of atomic hydrogen."
+      },
+      {
+        id: 58,
+        category: 'science',
+        categoryLabel: 'General Science',
+        icon: 'fa-flask',
+        question: "What common household mineral ranks as the softest reference benchmark (Rank 1) on the Mohs hardness scale?",
+        choices: ["Gypsum", "Talc", "Calcite", "Fluorite"],
+        correctIndex: 1,
+        fact: "Talc easily flakes under fingernail pressure and defines Rank 1 on Mohs scale, while diamond stands at Rank 10."
+      },
+      {
+        id: 59,
+        category: 'science',
+        categoryLabel: 'General Science',
+        icon: 'fa-flask',
+        question: "What property of fluids causes water striders to be able to walk across water without sinking?",
+        choices: ["Viscosity", "Surface Tension", "Capillary Action", "Osmotic Pressure"],
+        correctIndex: 1,
+        fact: "Strong cohesive hydrogen bonds between surface water molecules create surface tension, creating an elastic film capable of bearing lightweight insects."
+      },
+      {
+        id: 60,
+        category: 'science',
+        categoryLabel: 'General Science',
+        icon: 'fa-flask',
+        question: "Which planet in our solar system exhibits a density so low that it would theoretically float in a sufficiently large body of water?",
+        choices: ["Uranus", "Saturn", "Neptune", "Jupiter"],
+        correctIndex: 1,
+        fact: "Saturn has a mean density of roughly 0.687 g/cm³, noticeably lower than liquid water (1.00 g/cm³)."
+      },
+
+      // --- 2. NATURE & WILDLIFE (10 Questions) ---
+      {
+        id: 61,
+        category: 'nature',
+        categoryLabel: 'Nature & Wildlife',
+        icon: 'fa-leaf',
+        question: "What is the largest living individual tree by stem volume currently standing on Earth?",
+        choices: ["Hyperion (Coast Redwood)", "General Sherman (Giant Sequoia)", "Centurion (Mountain Ash)", "The President"],
+        correctIndex: 1,
+        fact: "Located in California's Sequoia National Park, 'General Sherman' measures approximately 1,487 cubic meters in wood volume."
+      },
+      {
+        id: 62,
+        category: 'nature',
+        categoryLabel: 'Nature & Wildlife',
+        icon: 'fa-leaf',
+        question: "Which organ do sharks rely upon to detect minute bio-electric fields generated by muscular twitches of prey?",
+        choices: ["Ampullae of Lorenzini", "Lateral line canal", "Jacobson's organ", "Spiracles"],
+        correctIndex: 0,
+        fact: "The Ampullae of Lorenzini are specialized electroreceptors appearing as tiny pores around a shark's snout, capable of detecting nano-volt electric fields."
+      },
+      {
+        id: 63,
+        category: 'nature',
+        categoryLabel: 'Nature & Wildlife',
+        icon: 'fa-leaf',
+        question: "Which of the following birds is the only known avian species capable of sustained backward flight?",
+        choices: ["Swift", "Hummingbird", "Kingfisher", "Swallow"],
+        correctIndex: 1,
+        fact: "Hummingbirds possess flexible ball-and-socket shoulder joints allowing 180-degree wing inversion, producing lift on both forward and backward strokes."
+      },
+      {
+        id: 64,
+        category: 'nature',
+        categoryLabel: 'Nature & Wildlife',
+        icon: 'fa-leaf',
+        question: "How many hearts does an octopus have to circulate blood through its gills and systemic organs?",
+        choices: ["One", "Two", "Three", "Four"],
+        correctIndex: 2,
+        fact: "Octopuses feature two branchial hearts that pump copper-rich hemocyanin blood through the gills, and one systemic heart that pumps it to the body."
+      },
+      {
+        id: 65,
+        category: 'nature',
+        categoryLabel: 'Nature & Wildlife',
+        icon: 'fa-leaf',
+        question: "Which marsupial is famously recognized for producing cubic-shaped feces to prevent droppings from rolling away from territorial rocks?",
+        choices: ["Koala", "Wombat", "Quokka", "Tasmanian Devil"],
+        correctIndex: 1,
+        fact: "Wombat intestines possess elastic grooves that dry and mold feces into uniform cubes, used to mark elevated rocks and fallen logs."
+      },
+      {
+        id: 66,
+        category: 'nature',
+        categoryLabel: 'Nature & Wildlife',
+        icon: 'fa-leaf',
+        question: "What pigment compound provides flamingos with their characteristic pink coloration through their dietary intake of brine shrimp and algae?",
+        choices: ["Carotenoids", "Chlorophyll", "Melanin", "Anthocyanin"],
+        correctIndex: 0,
+        fact: "Flamingos hatch with dull grey plumage and turn pink by metabolizing carotenoid pigments (canthaxanthin) found in microscopic aquatic crustaceans."
+      },
+      {
+        id: 67,
+        category: 'nature',
+        categoryLabel: 'Nature & Wildlife',
+        icon: 'fa-leaf',
+        question: "What is the collective noun for a gathered group of ravens?",
+        choices: ["A Murder", "An Unkindness", "A Parliament", "A Coven"],
+        correctIndex: 1,
+        fact: "While crows form a 'murder', a flock of ravens is traditionally denoted as an 'unkindness' or a 'conspiracy'."
+      },
+      {
+        id: 68,
+        category: 'nature',
+        categoryLabel: 'Nature & Wildlife',
+        icon: 'fa-leaf',
+        question: "Which aquatic organism is considered biologically immortal due to its ability to revert to a polyp colonial stage after sexual reproduction?",
+        choices: ["Turritopsis dohrnii", "Axolotl", "Hydra vulgaris", "Lungfish"],
+        correctIndex: 0,
+        fact: "Turritopsis dohrnii (the immortal jellyfish) utilizes transdifferentiation to reset differentiated cells back into juvenile polyp states when injured or aged."
+      },
+      {
+        id: 69,
+        category: 'nature',
+        categoryLabel: 'Nature & Wildlife',
+        icon: 'fa-leaf',
+        question: "What mammal holds the record for undertaking the longest non-stop annual seasonal migration, traveling over 10,000 miles roundtrip?",
+        choices: ["Humpback Whale", "Caribou", "Gray Whale", "African Elephant"],
+        correctIndex: 2,
+        fact: "Gray whales migrate up to 12,000 miles annually between Arctic feeding grounds and shallow Mexican birthing lagoons in Baja California."
+      },
+      {
+        id: 70,
+        category: 'nature',
+        categoryLabel: 'Nature & Wildlife',
+        icon: 'fa-leaf',
+        question: "In botanical classification, which of the following is technically a true botanical berry?",
+        choices: ["Strawberry", "Raspberry", "Banana", "Blackberry"],
+        correctIndex: 2,
+        fact: "Botanically, a berry arises from a single ovary with fleshy pericarp; hence bananas, tomatoes, and watermelons are berries, whereas strawberries are aggregate accessory fruits."
+      },
+
+      // --- 3. WORLD SPORT & ATHLETICS (10 Questions) ---
+      {
+        id: 71,
+        category: 'sport',
+        categoryLabel: 'World Sport',
+        icon: 'fa-medal',
+        question: "Who remains the only athlete in Olympic history to win individual gold medals in the 100m, 200m, and 4x100m relay across three consecutive Olympic Games?",
+        choices: ["Carl Lewis", "Usain Bolt", "Jesse Owens", "Michael Johnson"],
+        correctIndex: 1,
+        fact: "Jamaica's Usain Bolt swept the sprint events at Beijing 2008, London 2012, and Rio 2016, securing eight Olympic sprint gold medals."
+      },
+      {
+        id: 72,
+        category: 'sport',
+        categoryLabel: 'World Sport',
+        icon: 'fa-medal',
+        question: "What country has won the FIFA Men's World Cup trophy a record total of five times?",
+        choices: ["Germany", "Brazil", "Italy", "Argentina"],
+        correctIndex: 1,
+        fact: "Brazil won the Men's World Cup in 1958, 1962, 1970, 1994, and 2002, making them the most decorated national team in tournament history."
+      },
+      {
+        id: 73,
+        category: 'sport',
+        categoryLabel: 'World Sport',
+        icon: 'fa-medal',
+        question: "In what year did Sir Roger Bannister become the first human to break the mythical 4-minute mile barrier?",
+        choices: ["1948", "1954", "1960", "1936"],
+        correctIndex: 1,
+        fact: "On May 6, 1954, at Oxford's Iffley Road Track, 25-year-old Roger Bannister ran the mile in 3 minutes 59.4 seconds."
+      },
+      {
+        id: 74,
+        category: 'sport',
+        categoryLabel: 'World Sport',
+        icon: 'fa-medal',
+        question: "Which tennis championship is the oldest tournament in the world, founded in 1877 and played strictly on natural grass?",
+        choices: ["US Open", "Wimbledon", "Roland Garros", "Australian Open"],
+        correctIndex: 1,
+        fact: "The Championships, Wimbledon, was established in July 1877 at the All England Croquet and Lawn Tennis Club."
+      },
+      {
+        id: 75,
+        category: 'sport',
+        categoryLabel: 'World Sport',
+        icon: 'fa-medal',
+        question: "What is the exact target score required to achieve a 'perfect game' in ten-pin bowling?",
+        choices: ["250", "280", "300", "350"],
+        correctIndex: 2,
+        fact: "A 300 game is achieved by bowling 12 consecutive strikes across ten frames in a single game."
+      },
+      {
+        id: 76,
+        category: 'sport',
+        categoryLabel: 'World Sport',
+        icon: 'fa-medal',
+        question: "What is the official total marathon race distance formalized during the 1908 London Olympic Games?",
+        choices: ["26 miles (41.8 km)", "26 miles, 385 yards (42.195 km)", "25 miles (40.2 km)", "24 miles, 120 yards (38.8 km)"],
+        correctIndex: 1,
+        fact: "The British Royal Family requested the 1908 race begin at Windsor Castle and end in front of the Royal Box at White City Stadium, fixing the distance permanently at 26 miles 385 yards."
+      },
+      {
+        id: 77,
+        category: 'sport',
+        categoryLabel: 'World Sport',
+        icon: 'fa-medal',
+        question: "Which iconic basketball legend scored an astounding 100 points in a single NBA game in Hershey, Pennsylvania in 1962?",
+        choices: ["Michael Jordan", "Wilt Chamberlain", "Kareem Abdul-Jabbar", "Bill Russell"],
+        correctIndex: 1,
+        fact: "On March 2, 1962, Philadelphia Warriors center Wilt Chamberlain scored 100 points against the New York Knicks, an unbroken NBA record."
+      },
+      {
+        id: 78,
+        category: 'sport',
+        categoryLabel: 'World Sport',
+        icon: 'fa-medal',
+        question: "Which nation won the inaugural Rugby World Cup tournament held in 1987 in Australia and New Zealand?",
+        choices: ["Australia", "New Zealand", "South Africa", "England"],
+        correctIndex: 1,
+        fact: "The New Zealand All Blacks defeated France 29–9 at Eden Park, Auckland, on June 20, 1987, to claim the inaugural Webb Ellis Cup."
+      },
+      {
+        id: 79,
+        category: 'sport',
+        categoryLabel: 'World Sport',
+        icon: 'fa-medal',
+        question: "What color jersey is worn by the overall general classification leader in the Tour de France cycle race?",
+        choices: ["Green Jersey (Maillot Vert)", "Yellow Jersey (Maillot Jaune)", "Polka Dot Jersey", "White Jersey"],
+        correctIndex: 1,
+        fact: "The Maillot Jaune (Yellow Jersey) was introduced in 1919, colored yellow to reflect the distinctive yellow newsprint of race sponsor L'Auto."
+      },
+      {
+        id: 80,
+        category: 'sport',
+        categoryLabel: 'World Sport',
+        icon: 'fa-medal',
+        question: "Which Formula 1 driver holds the record for the most total career race pole positions in Grand Prix history?",
+        choices: ["Michael Schumacher", "Ayrton Senna", "Lewis Hamilton", "Max Verstappen"],
+        correctIndex: 2,
+        fact: "Lewis Hamilton holds the F1 all-time pole position record, becoming the first driver to surpass 100 career pole positions."
+      },
+
+      // --- 4. ENTERTAINMENT & CINEMA (10 Questions) ---
+      {
+        id: 81,
+        category: 'entertainment',
+        categoryLabel: 'Entertainment & Cinema',
+        icon: 'fa-film',
+        question: "Which motion picture was the first full-length feature film entirely created using computer-generated imagery (CGI) in 1995?",
+        choices: ["Jurassic Park", "Toy Story", "A Bug's Life", "Monsters, Inc."],
+        correctIndex: 1,
+        fact: "Directed by John Lasseter and produced by Pixar Animation Studios, Toy Story debuted in November 1995 as the first feature film animated entirely on computers."
+      },
+      {
+        id: 82,
+        category: 'entertainment',
+        categoryLabel: 'Entertainment & Cinema',
+        icon: 'fa-film',
+        question: "Who composed the memorable orchestral scores for Star Wars, Jaws, Raiders of the Lost Ark, and Jurassic Park?",
+        choices: ["Hans Zimmer", "John Williams", "Ennio Morricone", "Danny Elfman"],
+        correctIndex: 1,
+        fact: "John Williams has received over 50 Academy Award nominations, making him the second most nominated individual in Oscar history after Walt Disney."
+      },
+      {
+        id: 83,
+        category: 'entertainment',
+        categoryLabel: 'Entertainment & Cinema',
+        icon: 'fa-film',
+        question: "What is the best-selling studio music album of all time globally, with certified sales exceeding 70 million units?",
+        choices: ["The Dark Side of the Moon (Pink Floyd)", "Thriller (Michael Jackson)", "Back in Black (AC/DC)", "Rumours (Fleetwood Mac)"],
+        correctIndex: 1,
+        fact: "Released in November 1982 by Epic Records and produced by Quincy Jones, Michael Jackson's Thriller yielded seven Top 10 Billboard singles."
+      },
+      {
+        id: 84,
+        category: 'entertainment',
+        categoryLabel: 'Entertainment & Cinema',
+        icon: 'fa-film',
+        question: "Which 1994 cinematic masterpiece topped the IMDb Top 250 user-rated film rankings for well over a decade?",
+        choices: ["Pulp Fiction", "The Shawshank Redemption", "Forrest Gump", "Schindler's List"],
+        correctIndex: 1,
+        fact: "Frank Darabont's adaptation of Stephen King's novella Rita Hayworth and Shawshank Redemption remains the highest-rated movie in IMDb history."
+      },
+      {
+        id: 85,
+        category: 'entertainment',
+        categoryLabel: 'Entertainment & Cinema',
+        icon: 'fa-film',
+        question: "What was the first movie to surpass $2 billion in worldwide box office gross receipts during its initial theatrical run?",
+        choices: ["Titanic (1997)", "Avatar (2009)", "Avengers: Endgame (2019)", "Star Wars: The Force Awakens (2015)"],
+        correctIndex: 1,
+        fact: "James Cameron's Avatar crossed $2 billion in just 47 days in early 2010, breaking the previous record held by his own Titanic."
+      },
+      {
+        id: 86,
+        category: 'entertainment',
+        categoryLabel: 'Entertainment & Cinema',
+        icon: 'fa-film',
+        question: "Which actress portrays the heroic character Katniss Everdeen in the blockbuster 'The Hunger Games' film adaptations?",
+        choices: ["Emma Stone", "Jennifer Lawrence", "Kristen Stewart", "Shailene Woodley"],
+        correctIndex: 1,
+        fact: "Jennifer Lawrence starred across all four Hunger Games film installments from 2012 to 2015, solidifying her status as Hollywood's top-earning action heroine."
+      },
+      {
+        id: 87,
+        category: 'entertainment',
+        categoryLabel: 'Entertainment & Cinema',
+        icon: 'fa-film',
+        question: "Which video game character is celebrated as the longest-running and highest-grossing mascot in gaming history, created by Shigeru Miyamoto in 1981?",
+        choices: ["Sonic the Hedgehog", "Mario", "Pac-Man", "Mega Man"],
+        correctIndex: 1,
+        fact: "Mario first appeared as 'Jumpman' in the 1981 arcade hit Donkey Kong before heading up his own Nintendo flagship franchise."
+      },
+      {
+        id: 88,
+        category: 'entertainment',
+        categoryLabel: 'Entertainment & Cinema',
+        icon: 'fa-film',
+        question: "In what fictional medieval continent does the majority of the political turmoil take place in HBO's 'Game of Thrones'?",
+        choices: ["Essos", "Westeros", "Sothoryos", "Ulthos"],
+        correctIndex: 1,
+        fact: "George R.R. Martin's epic saga primarily chronicles the power struggles across the Seven Kingdoms situated on the continent of Westeros."
+      },
+      {
+        id: 89,
+        category: 'entertainment',
+        categoryLabel: 'Entertainment & Cinema',
+        icon: 'fa-film',
+        question: "Who directed the landmark 1968 psychological horror and science-fiction masterpiece '2001: A Space Odyssey'?",
+        choices: ["Stanley Kubrick", "Ridley Scott", "Steven Spielberg", "George Lucas"],
+        correctIndex: 0,
+        fact: "Stanley Kubrick co-wrote the screenplay alongside Arthur C. Clarke, pioneering groundbreaking practical visual effects and philosophical AI themes."
+      },
+      {
+        id: 90,
+        category: 'entertainment',
+        categoryLabel: 'Entertainment & Cinema',
+        icon: 'fa-film',
+        question: "What British rock quartet recorded their famous final studio album 'Abbey Road' in 1969?",
+        choices: ["The Rolling Stones", "The Beatles", "The Who", "Led Zeppelin"],
+        correctIndex: 1,
+        fact: "The Beatles released Abbey Road in September 1969, featuring its famous zebra crossing cover photo taken outside EMI's St John's Wood studios."
+      },
+
+      // --- 5. WORLD GEOGRAPHY (10 Questions) ---
+      {
+        id: 91,
+        category: 'geography',
+        categoryLabel: 'World Geography',
+        icon: 'fa-map-location-dot',
+        question: "Which country in the world borders the greatest number of neighboring sovereign nations (14 distinct countries)?",
+        choices: ["Russia & China (Tied at 14)", "Brazil", "India", "Democratic Republic of Congo"],
+        correctIndex: 0,
+        fact: "Both China and Russia share official land borders with 14 sovereign states, more than any other nation on Earth."
+      },
+      {
+        id: 92,
+        category: 'geography',
+        categoryLabel: 'World Geography',
+        icon: 'fa-map-location-dot',
+        question: "What is the deepest known oceanic depression on Earth, descending nearly 11,000 meters (36,000 feet) below sea level?",
+        choices: ["Puerto Rico Trench", "Mariana Trench (Challenger Deep)", "Java Trench", "Sunda Deep"],
+        correctIndex: 1,
+        fact: "Challenger Deep, situated at the southern end of the Mariana Trench in the western Pacific, plunges to approximately 10,994 meters depth."
+      },
+      {
+        id: 93,
+        category: 'geography',
+        categoryLabel: 'World Geography',
+        icon: 'fa-map-location-dot',
+        question: "Which African lake is the world's longest freshwater lake, stretching over 418 miles along the East African Rift?",
+        choices: ["Lake Victoria", "Lake Tanganyika", "Lake Malawi", "Lake Chad"],
+        correctIndex: 1,
+        fact: "Lake Tanganyika is the longest freshwater lake in the world (673 km) and the second deepest after Lake Baikal in Siberia."
+      },
+      {
+        id: 94,
+        category: 'geography',
+        categoryLabel: 'World Geography',
+        icon: 'fa-map-location-dot',
+        question: "What is the capital city of Canada?",
+        choices: ["Toronto", "Montreal", "Ottawa", "Vancouver"],
+        correctIndex: 2,
+        fact: "Queen Victoria chose Ottawa as Canada's permanent capital in 1857 due to its strategic location between English-speaking Ontario and French-speaking Quebec."
+      },
+      {
+        id: 95,
+        category: 'geography',
+        categoryLabel: 'World Geography',
+        icon: 'fa-map-location-dot',
+        question: "The Strait of Gibraltar connects the Atlantic Ocean directly to which body of water?",
+        choices: ["Red Sea", "Mediterranean Sea", "Black Sea", "Baltic Sea"],
+        correctIndex: 1,
+        fact: "Separating Spain from Morocco by merely 8.9 nautical miles at its narrowest point, the Strait connects the Atlantic with the Mediterranean."
+      },
+      {
+        id: 96,
+        category: 'geography',
+        categoryLabel: 'World Geography',
+        icon: 'fa-map-location-dot',
+        question: "What is the largest country by geographical land area in South America?",
+        choices: ["Argentina", "Brazil", "Colombia", "Peru"],
+        correctIndex: 1,
+        fact: "Covering over 8.5 million square kilometers, Brazil occupies almost half of the South American continent and borders every South American nation except Chile and Ecuador."
+      },
+      {
+        id: 97,
+        category: 'geography',
+        categoryLabel: 'World Geography',
+        icon: 'fa-map-location-dot',
+        question: "Which desert is recognized as the driest non-polar desert on Earth, with sections that have seen virtually no recorded rainfall in history?",
+        choices: ["Sahara Desert", "Atacama Desert", "Gobi Desert", "Kalahari Desert"],
+        correctIndex: 1,
+        fact: "Chile's Atacama Desert is shielded by both the Andes and the Chilean Coastal Range, creating a double rain-shadow hyper-arid environment."
+      },
+      {
+        id: 98,
+        category: 'geography',
+        categoryLabel: 'World Geography',
+        icon: 'fa-map-location-dot',
+        question: "Through which major world city does the Prime Meridian (0° Longitude) officially pass?",
+        choices: ["Paris, France", "Greenwich (London), United Kingdom", "Rome, Italy", "Geneva, Switzerland"],
+        correctIndex: 1,
+        fact: "The International Meridian Conference of 1884 established the transit instrument at the Royal Observatory in Greenwich, London, as the zero reference longitude."
+      },
+      {
+        id: 99,
+        category: 'geography',
+        categoryLabel: 'World Geography',
+        icon: 'fa-map-location-dot',
+        question: "What is the tallest standalone mountain peak in the world measured from base to summit on dry land?",
+        choices: ["Mount Everest", "Mount Kilimanjaro", "K2", "Denali"],
+        correctIndex: 1,
+        fact: "Tanzania's Mount Kilimanjaro is a dormant stratovolcano rising 5,895 meters above sea level and roughly 4,900 meters above its plateau base."
+      },
+      {
+        id: 100,
+        category: 'geography',
+        categoryLabel: 'World Geography',
+        icon: 'fa-map-location-dot',
+        question: "Which sovereign island country in the Indian Ocean is the fourth largest island in the world by surface area?",
+        choices: ["Sri Lanka", "Madagascar", "Mauritius", "Maldives"],
+        correctIndex: 1,
+        fact: "Covering roughly 587,000 square kilometers, Madagascar split from the Indian subcontinent ~88 million years ago, allowing singular endemic flora and fauna to evolve."
+      },
+
       // --- MOTORING HISTORY (13) ---
       {
         id: 1,
@@ -525,7 +1044,7 @@
           "Derived from the French military term 'Jupe d'acier'"
         ],
         correctIndex: 0,
-        fact: "Most military historians attribute the name to the phonetic slur of 'GP' (General Purpose or Government Purpose vehicle) combined with popular comics featuring Eugene the Jeep from Popeye."
+        fact: "Most military historians attribute the name to the phonetic slur of 'GP' (General Purpose vehicle) combined with popular comics featuring Eugene the Jeep from Popeye."
       },
       {
         id: 8,
@@ -724,7 +1243,7 @@
       {
         id: 27,
         category: 'evolution',
-        categoryLabel: 'Evolution & Science',
+        categoryLabel: 'Evolution & Origins',
         icon: 'fa-dna',
         question: "In 1859, Charles Darwin published his foundational treatise on natural selection under what title?",
         choices: [
@@ -739,7 +1258,7 @@
       {
         id: 28,
         category: 'evolution',
-        categoryLabel: 'Evolution & Science',
+        categoryLabel: 'Evolution & Origins',
         icon: 'fa-dna',
         question: "The famous 3.2-million-year-old hominin fossil skeleton nicknamed 'Lucy', discovered in Ethiopia in 1974, belongs to which species?",
         choices: ["Homo erectus", "Australopithecus afarensis", "Homo habilis", "Ardipithecus ramidus"],
@@ -749,7 +1268,7 @@
       {
         id: 29,
         category: 'evolution',
-        categoryLabel: 'Evolution & Science',
+        categoryLabel: 'Evolution & Origins',
         icon: 'fa-dna',
         question: "Modern birds are phylogenetic descendants of which group of extinct organisms?",
         choices: ["Pterosaurs", "Theropod dinosaurs", "Sauropods", "Plesiosaurs"],
@@ -759,7 +1278,7 @@
       {
         id: 30,
         category: 'evolution',
-        categoryLabel: 'Evolution & Science',
+        categoryLabel: 'Evolution & Origins',
         icon: 'fa-dna',
         question: "What 150-million-year-old fossil with feathers, teeth, and a bony tail provided early evidence of transitional forms between non-avian dinosaurs and birds?",
         choices: ["Archaeopteryx", "Tiktaalik", "Pelycosaur", "Dimetrodon"],
@@ -769,7 +1288,7 @@
       {
         id: 31,
         category: 'evolution',
-        categoryLabel: 'Evolution & Science',
+        categoryLabel: 'Evolution & Origins',
         icon: 'fa-dna',
         question: "What evolutionary phenomenon occurs when unrelated species independently evolve similar traits due to adapting to similar ecological niches?",
         choices: ["Convergent evolution", "Adaptive radiation", "Genetic drift", "Sympatric speciation"],
@@ -779,7 +1298,7 @@
       {
         id: 32,
         category: 'evolution',
-        categoryLabel: 'Evolution & Science',
+        categoryLabel: 'Evolution & Origins',
         icon: 'fa-dna',
         question: "Approximately how many millions of years ago did the Cretaceous-Paleogene (K-Pg) mass extinction event wipe out non-avian dinosaurs?",
         choices: ["252 million years ago", "66 million years ago", "12 million years ago", "443 million years ago"],
@@ -789,7 +1308,7 @@
       {
         id: 33,
         category: 'evolution',
-        categoryLabel: 'Evolution & Science',
+        categoryLabel: 'Evolution & Origins',
         icon: 'fa-dna',
         question: "Who is celebrated as the 'Father of Modern Genetics' for his mid-19th century hybridization experiments on garden pea plants?",
         choices: ["Gregor Mendel", "Thomas Hunt Morgan", "Francis Crick", "Jean-Baptiste Lamarck"],
@@ -799,7 +1318,7 @@
       {
         id: 34,
         category: 'evolution',
-        categoryLabel: 'Evolution & Science',
+        categoryLabel: 'Evolution & Origins',
         icon: 'fa-dna',
         question: "What transitional fossil discovered in Arctic Canada in 2004 revealed how fish transitioned into four-limbed land animals (tetrapods)?",
         choices: ["Tiktaalik roseae", "Coelacanth", "Ichthyostega", "Amphioxus"],
@@ -809,7 +1328,7 @@
       {
         id: 35,
         category: 'evolution',
-        categoryLabel: 'Evolution & Science',
+        categoryLabel: 'Evolution & Origins',
         icon: 'fa-dna',
         question: "Genetic evidence reveals that modern humans outside sub-Saharan Africa carry roughly 1% to 2% DNA inherited from which archaic human species?",
         choices: ["Neanderthals", "Homo floresiensis", "Homo naledi", "Australopithecus africanus"],
@@ -819,7 +1338,7 @@
       {
         id: 36,
         category: 'evolution',
-        categoryLabel: 'Evolution & Science',
+        categoryLabel: 'Evolution & Origins',
         icon: 'fa-dna',
         question: "The human tailbone (coccyx) and the appendix are classic examples of which anatomical structures?",
         choices: ["Vestigial structures", "Homologous analogies", "Exaptations", "Atavisms"],
@@ -829,7 +1348,7 @@
       {
         id: 37,
         category: 'evolution',
-        categoryLabel: 'Evolution & Science',
+        categoryLabel: 'Evolution & Origins',
         icon: 'fa-dna',
         question: "What biological process explains how mitochondria and chloroplasts originated as free-living prokaryotes engulfed by ancestral eukaryotic cells?",
         choices: ["Endosymbiosis", "Cellular Meiosis", "Horizontal Gene Transfer", "Biogenesis"],
@@ -839,7 +1358,7 @@
       {
         id: 38,
         category: 'evolution',
-        categoryLabel: 'Evolution & Science',
+        categoryLabel: 'Evolution & Origins',
         icon: 'fa-dna',
         question: "Which Pacific island archipelago's distinct species of finches and giant tortoises fundamentally inspired Charles Darwin's evolutionary concepts?",
         choices: ["Galápagos Islands", "Hawaiian Islands", "Fiji Islands", "Canary Islands"],
@@ -851,7 +1370,7 @@
       {
         id: 39,
         category: 'sites',
-        categoryLabel: 'Historical Sites & Landmarks',
+        categoryLabel: 'Historical Sites',
         icon: 'fa-monument',
         question: "Which of the Seven Wonders of the Ancient World is the only one that remains largely intact to this day?",
         choices: ["Lighthouse of Alexandria", "Great Pyramid of Giza", "Colossus of Rhodes", "Hanging Gardens of Babylon"],
@@ -861,7 +1380,7 @@
       {
         id: 40,
         category: 'sites',
-        categoryLabel: 'Historical Sites & Landmarks',
+        categoryLabel: 'Historical Sites',
         icon: 'fa-monument',
         question: "The ancient rock-carved city of Petra, famed for the Treasury building ('Al-Khazneh'), was built by which civilization?",
         choices: ["Nabataeans", "Phoenicians", "Assyrians", "Persians"],
@@ -871,7 +1390,7 @@
       {
         id: 41,
         category: 'sites',
-        categoryLabel: 'Historical Sites & Landmarks',
+        categoryLabel: 'Historical Sites',
         icon: 'fa-monument',
         question: "Located in modern-day Turkey, what site is recognized as the world's oldest known monumental temple complex, dating back to roughly 9500 BC?",
         choices: ["Göbekli Tepe", "Çatalhöyük", "Derinkuyu", "Hattusa"],
@@ -881,7 +1400,7 @@
       {
         id: 42,
         category: 'sites',
-        categoryLabel: 'Historical Sites & Landmarks',
+        categoryLabel: 'Historical Sites',
         icon: 'fa-monument',
         question: "Machu Picchu, the 15th-century mountain citadel perched high in the Andes, was constructed during the height of which empire?",
         choices: ["Inca Empire", "Aztec Empire", "Maya Empire", "Toltec Empire"],
@@ -891,7 +1410,7 @@
       {
         id: 43,
         category: 'sites',
-        categoryLabel: 'Historical Sites & Landmarks',
+        categoryLabel: 'Historical Sites',
         icon: 'fa-monument',
         question: "Which colossal stone monument on Salisbury Plain in Wiltshire, England was erected in phases between 3000 BC and 2000 BC?",
         choices: ["Stonehenge", "Carnac Stones", "Newgrange", "Callanish Stones"],
@@ -901,9 +1420,9 @@
       {
         id: 44,
         category: 'sites',
-        categoryLabel: 'Historical Sites & Landmarks',
+        categoryLabel: 'Historical Sites',
         icon: 'fa-monument',
-        question: "In which country can you visit Angkor Wat, the largest religious religious temple complex by area in the world?",
+        question: "In which country can you visit Angkor Wat, the largest religious temple complex by area in the world?",
         choices: ["Cambodia", "Thailand", "Vietnam", "Indonesia"],
         correctIndex: 0,
         fact: "Constructed by King Suryavarman II in the early 12th century as a Hindu temple dedicated to Vishnu, Angkor Wat transformed into a Buddhist complex."
@@ -911,7 +1430,7 @@
       {
         id: 45,
         category: 'sites',
-        categoryLabel: 'Historical Sites & Landmarks',
+        categoryLabel: 'Historical Sites',
         icon: 'fa-monument',
         question: "The subterranean Mausoleum of the First Qin Emperor in Xi'an, China, famously contains thousands of life-sized sculptures known as what?",
         choices: ["The Terracotta Army", "The Jade Warriors", "The Bronze Sentinels", "The Forbidden Guard"],
@@ -921,7 +1440,7 @@
       {
         id: 46,
         category: 'sites',
-        categoryLabel: 'Historical Sites & Landmarks',
+        categoryLabel: 'Historical Sites',
         icon: 'fa-monument',
         question: "What iconic amphitheater in Rome, inaugurated by Emperor Titus in 80 AD, could seat over 50,000 spectators for gladiatorial spectacles?",
         choices: ["The Colosseum (Flavian Amphitheatre)", "The Circus Maximus", "The Pantheon", "The Roman Forum"],
@@ -931,7 +1450,7 @@
       {
         id: 47,
         category: 'sites',
-        categoryLabel: 'Historical Sites & Landmarks',
+        categoryLabel: 'Historical Sites',
         icon: 'fa-monument',
         question: "The Parthenon, a temple dedicated to the goddess Athena on the Acropolis, was constructed in which ancient city-state?",
         choices: ["Athens", "Sparta", "Corinth", "Thebes"],
@@ -941,7 +1460,7 @@
       {
         id: 48,
         category: 'sites',
-        categoryLabel: 'Historical Sites & Landmarks',
+        categoryLabel: 'Historical Sites',
         icon: 'fa-monument',
         question: "Easter Island (Rapa Nui), famous for its monumental monolithic stone statues called Moai, is a special territory of which South American nation?",
         choices: ["Chile", "Peru", "Argentina", "Ecuador"],
@@ -951,7 +1470,7 @@
       {
         id: 49,
         category: 'sites',
-        categoryLabel: 'Historical Sites & Landmarks',
+        categoryLabel: 'Historical Sites',
         icon: 'fa-monument',
         question: "Hagia Sophia, renowned for its massive central dome and changing roles across Orthodox cathedral, Catholic church, and mosque, is in which city?",
         choices: ["Istanbul", "Athens", "Alexandria", "Jerusalem"],
@@ -961,7 +1480,7 @@
       {
         id: 50,
         category: 'sites',
-        categoryLabel: 'Historical Sites & Landmarks',
+        categoryLabel: 'Historical Sites',
         icon: 'fa-monument',
         question: "The Taj Mahal, an ivory-white marble mausoleum on the south bank of the Yamuna River, was commissioned by which Mughal Emperor for his favorite wife?",
         choices: ["Shah Jahan", "Akbar the Great", "Babur", "Aurangzeb"],
@@ -1019,19 +1538,19 @@
         osc.start();
         osc.stop(ctx.currentTime + duration);
       } catch (e) {
-        // audio fail silent
+        // audio fail-safe
       }
     }
 
     function soundCorrect() {
       if (!sfxEnabled) return;
-      playTone(587.33, 'triangle', 0.1, 0.15); // D5
-      setTimeout(() => playTone(880, 'sine', 0.25, 0.2), 90); // A5
+      playTone(587.33, 'triangle', 0.1, 0.15);
+      setTimeout(() => playTone(880, 'sine', 0.25, 0.2), 90);
     }
 
     function soundIncorrect() {
       if (!sfxEnabled) return;
-      playTone(220, 'sawtooth', 0.2, 0.15); // A3
+      playTone(220, 'sawtooth', 0.2, 0.15);
       setTimeout(() => playTone(180, 'sawtooth', 0.3, 0.15), 110);
     }
 
@@ -1053,17 +1572,16 @@
     /* =====================================================================
        3. STATE MANAGEMENT
        ===================================================================== */
-    let currentMode = 'marathon'; // 'marathon' (50), 'quick' (20), 'custom'
-    let customCategory = 'motoring';
+    let currentMode = 'marathon';
+    let customCategory = 'science';
     let activeQuestions = [];
     let currentIndex = 0;
     let score = 0;
     let currentStreak = 0;
     let bestStreak = 0;
-    let userAnswers = []; // records { question, chosenIndex, isCorrect }
+    let userAnswers = [];
     let answeredCurrent = false;
 
-    // Shuffle helper
     function shuffleArray(arr) {
       const copy = [...arr];
       for (let i = copy.length - 1; i > 0; i--) {
@@ -1098,15 +1616,14 @@
     }
 
     function startQuiz() {
-      getAudioContext(); // user activation
+      getAudioContext();
       hideAllModals();
 
-      // Filter and set questions based on mode
       let pool = [];
       if (currentMode === 'marathon') {
         pool = shuffleArray(QUESTION_BANK);
       } else if (currentMode === 'quick') {
-        pool = shuffleArray(QUESTION_BANK).slice(0, 20);
+        pool = shuffleArray(QUESTION_BANK).slice(0, 25);
       } else {
         pool = shuffleArray(QUESTION_BANK.filter(q => q.category === customCategory));
       }
@@ -1119,7 +1636,6 @@
       userAnswers = [];
       answeredCurrent = false;
 
-      // Update UI elements
       document.getElementById('totalQuestionsNum').innerText = activeQuestions.length;
       document.getElementById('scoreDisplay').innerText = score;
       document.getElementById('streakCount').innerText = currentStreak;
@@ -1135,29 +1651,23 @@
       answeredCurrent = false;
       const q = activeQuestions[currentIndex];
       
-      // Update Question Counters & Progress
       document.getElementById('currentQuestionNum').innerText = currentIndex + 1;
       const pct = Math.round(((currentIndex) / activeQuestions.length) * 100);
-      document.getElementById('progressBar').style.width = `${Math.max(2, pct)}%`;
+      document.getElementById('progressBar').style.width = `${Math.max(1, pct)}%`;
 
-      // Category badge
       const badge = document.getElementById('categoryBadge');
       badge.innerHTML = `<i class="fa-solid ${q.icon}"></i> ${q.categoryLabel}`;
 
-      // Question text
       document.getElementById('questionText').innerText = q.question;
 
-      // Hide Fact snippet
       const factBox = document.getElementById('factBox');
       factBox.classList.add('hidden');
       factBox.classList.remove('border-emerald-500/40', 'border-rose-500/40');
 
-      // Next Button disabled
       const nextBtn = document.getElementById('nextBtn');
       nextBtn.disabled = true;
       document.getElementById('nextBtnLabel').innerText = (currentIndex === activeQuestions.length - 1) ? 'View Final Results' : 'Next Question';
 
-      // Render 4 Choices
       const grid = document.getElementById('choicesGrid');
       grid.innerHTML = '';
       const letters = ['A', 'B', 'C', 'D'];
@@ -1196,7 +1706,6 @@
         isCorrect: isCorrect
       });
 
-      // Disable all choices & highlight states
       for (let i = 0; i < q.choices.length; i++) {
         const btn = document.getElementById(`choiceBtn_${i}`);
         const iconSpan = document.getElementById(`choiceIcon_${i}`);
@@ -1215,12 +1724,10 @@
         }
       }
 
-      // Points & Streaks
       if (isCorrect) {
         currentStreak++;
         if (currentStreak > bestStreak) bestStreak = currentStreak;
         
-        // Base points + streak multiplier bonus
         const streakBonus = (currentStreak - 1) * 25;
         const awarded = 100 + streakBonus;
         score += awarded;
@@ -1238,15 +1745,12 @@
         factBox.classList.add('border-rose-500/30', 'bg-rose-950/20');
       }
 
-      // Update HUD
       document.getElementById('scoreDisplay').innerText = score;
       document.getElementById('streakCount').innerText = currentStreak;
 
-      // Show Fact Explanation
-      factText.innerHTML = `<strong>${isCorrect ? 'Correct! ' : 'Notice: '}</strong>` + q.fact;
+      factText.innerHTML = `<strong>${isCorrect ? 'Correct! ' : 'Explanation: '}</strong>` + q.fact;
       factBox.classList.remove('hidden');
 
-      // Enable Next
       nextBtn.disabled = false;
       nextBtn.focus();
     }
@@ -1275,16 +1779,11 @@
       const correctCount = userAnswers.filter(a => a.isCorrect).length;
       const accuracyPercent = Math.round((correctCount / total) * 100);
 
-      // Populate metrics
       document.getElementById('finalScoreVal').innerText = score;
       document.getElementById('finalAccuracyVal').innerText = `${accuracyPercent}%`;
       document.getElementById('finalCorrectCount').innerText = `${correctCount} / ${total}`;
       document.getElementById('finalBestStreak').innerText = bestStreak;
 
-      // Medals & Ranks calculation (Strictly as specified:
-      // Top 30% (71-100%): Gold
-      // Second 30% (41-70%): Silver
-      // Bottom 40% (0-40%): Bronze
       const medalIcon = document.getElementById('medalIconWrap');
       const tierName = document.getElementById('medalTierName');
       const rankTitle = document.getElementById('rankTitle');
@@ -1292,35 +1791,31 @@
       const glowBg = document.getElementById('medalGlowBg');
 
       if (accuracyPercent >= 71) {
-        // GOLD MEDAL
         medalIcon.innerText = '🥇';
         medalIcon.className = 'w-24 h-24 mx-auto rounded-3xl bg-amber-500/20 border-2 border-amber-500/50 flex items-center justify-center text-5xl shadow-xl shadow-amber-500/20 animate-bounce-slow';
         tierName.innerText = 'Gold Medal Tier (Top 30%)';
         tierName.className = 'text-xs uppercase font-extrabold tracking-widest text-amber-400';
-        rankTitle.innerText = 'Grand Master Historian';
-        rankSubtitle.innerText = 'Extraordinary achievement! You placed firmly in the elite Gold tier with profound mastery of science, evolution, motoring history, and ancient wonders.';
+        rankTitle.innerText = 'Grand Polymath Luminary';
+        rankSubtitle.innerText = 'Exceptional intellectual stamina! You cleared this marathon with profound command across all scientific, geographic, sporting, and historical domains.';
         glowBg.className = 'absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-amber-500/20 rounded-full blur-3xl pointer-events-none';
       } else if (accuracyPercent >= 41) {
-        // SILVER MEDAL
         medalIcon.innerText = '🥈';
         medalIcon.className = 'w-24 h-24 mx-auto rounded-3xl bg-slate-400/20 border-2 border-slate-300/50 flex items-center justify-center text-5xl shadow-xl shadow-slate-400/20';
         tierName.innerText = 'Silver Medal Tier (Middle 30%)';
         tierName.className = 'text-xs uppercase font-extrabold tracking-widest text-slate-300';
-        rankTitle.innerText = 'Adept Scholar';
-        rankSubtitle.innerText = 'Solid performance! You demonstrated commendable knowledge across diverse epochs. A little more revision in weaker categories will push you to Gold!';
+        rankTitle.innerText = 'Erudite Scholar';
+        rankSubtitle.innerText = 'Strong performance! You navigated a broad spectrum of challenging fields. Review your missed topics below to secure Gold!';
         glowBg.className = 'absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-slate-300/15 rounded-full blur-3xl pointer-events-none';
       } else {
-        // BRONZE MEDAL
         medalIcon.innerText = '🥉';
         medalIcon.className = 'w-24 h-24 mx-auto rounded-3xl bg-amber-800/20 border-2 border-amber-700/50 flex items-center justify-center text-5xl shadow-xl shadow-amber-800/20';
         tierName.innerText = 'Bronze Medal Tier (Bottom 40%)';
         tierName.className = 'text-xs uppercase font-extrabold tracking-widest text-amber-600';
-        rankTitle.innerText = 'Curious Apprentice';
-        rankSubtitle.innerText = 'A respectable start! You encountered some of history and science\'s trickiest landmarks and milestones. Dive into the review tab to discover the full facts.';
+        rankTitle.innerText = 'Curious Explorer';
+        rankSubtitle.innerText = 'A solid foundation! A hundred diverse questions test memory across distinct centuries and subjects. Browse the full review to learn the facts.';
         glowBg.className = 'absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-amber-800/15 rounded-full blur-3xl pointer-events-none';
       }
 
-      // Generate Domain Breakdown Stats
       renderCategoryStats();
       renderReviewModalList();
     }
@@ -1330,9 +1825,14 @@
       statsGrid.innerHTML = '';
 
       const cats = [
+        { key: 'science', label: 'General Science', icon: 'fa-flask' },
+        { key: 'nature', label: 'Nature & Wildlife', icon: 'fa-leaf' },
+        { key: 'sport', label: 'World Sport', icon: 'fa-medal' },
+        { key: 'entertainment', label: 'Entertainment & Film', icon: 'fa-film' },
+        { key: 'geography', label: 'World Geography', icon: 'fa-map-location-dot' },
         { key: 'motoring', label: 'Motoring History', icon: 'fa-car' },
         { key: 'events', label: 'World Events', icon: 'fa-earth-americas' },
-        { key: 'evolution', label: 'Evolution & Science', icon: 'fa-dna' },
+        { key: 'evolution', label: 'Evolution & Origins', icon: 'fa-dna' },
         { key: 'sites', label: 'Historical Sites', icon: 'fa-monument' }
       ];
 
@@ -1435,26 +1935,22 @@
        5. KEYBOARD ACCESSIBILITY CONTROLS
        ===================================================================== */
     window.addEventListener('keydown', (e) => {
-      // If modal is open, let Escape close it
       if (e.key === 'Escape') {
         hideAllModals();
         return;
       }
 
-      // Check if quiz screen is actively visible
       const quizScreen = document.getElementById('quizScreen');
       if (quizScreen.classList.contains('hidden')) return;
 
       const key = e.key.toUpperCase();
 
-      // Keyboard choices: A/1, B/2, C/3, D/4
       if (!answeredCurrent) {
         if (key === 'A' || key === '1') handleChoice(0);
         else if (key === 'B' || key === '2') handleChoice(1);
         else if (key === 'C' || key === '3') handleChoice(2);
         else if (key === 'D' || key === '4') handleChoice(3);
       } else {
-        // If already answered, Enter or Space advances
         if (key === 'ENTER' || key === ' ') {
           e.preventDefault();
           nextQuestion();
@@ -1462,7 +1958,6 @@
       }
     });
 
-    // Ensure audio can warm up on user gesture
     document.addEventListener('click', () => {
       if (!audioCtx) getAudioContext();
     }, { once: true });
