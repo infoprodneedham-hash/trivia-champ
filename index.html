@@ -1964,5 +1964,316 @@
       if (!audioCtx) getAudioContext();
     }, { once: true });
   </script>
+  <!-- START: Affiliate Bottom Drawer Component -->
+<aside id="affiliate-drawer" aria-label="Partner & Suite Apps" class="aff-drawer aff-open">
+  <!-- Tab / Handle for toggle -->
+  <button id="aff-drawer-toggle" type="button" class="aff-toggle-btn" aria-expanded="true" aria-controls="aff-drawer-content">
+    <span class="aff-tab-pill">
+      <span class="aff-pill-icon">✨</span>
+      <span class="aff-tab-title">More Web Utilities</span>
+      <svg class="aff-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m6 9 6 6 6-6"/>
+      </svg>
+    </span>
+  </button>
+
+  <!-- Drawer Body Content -->
+  <div id="aff-drawer-content" class="aff-content">
+    <div class="aff-header">
+      <span class="aff-eyebrow">Suite Utilities</span>
+      <p class="aff-tagline">Explore companion tools built for productivity, cooking, and finance.</p>
+    </div>
+
+    <div class="aff-grid">
+      <!-- App 1: 30 Minute Chef -->
+      <a href="https://30minutechef.app" target="_blank" rel="noopener noreferrer" class="aff-card aff-card-chef">
+        <div class="aff-card-badge">🍳</div>
+        <div class="aff-card-details">
+          <div class="aff-card-heading">
+            <h4>30MinuteChef.app</h4>
+            <span class="aff-ext-arrow">↗</span>
+          </div>
+          <p>Speedy, flavourful, low-prep recipes designed for real busy weeknights.</p>
+        </div>
+      </a>
+
+      <!-- App 2: Budget Tracker -->
+      <a href="https://mybudgettrack.app" target="_blank" rel="noopener noreferrer" class="aff-card aff-card-budget">
+        <div class="aff-card-badge">💰</div>
+        <div class="aff-card-details">
+          <div class="aff-card-heading">
+            <h4>MyBudgetTrack.app</h4>
+            <span class="aff-ext-arrow">↗</span>
+          </div>
+          <p>Simple offline-first budgeting and cashflow forecasting without subscriptions.</p>
+        </div>
+      </a>
+
+      <!-- App 3: Project Pal -->
+      <a href="https://projectpal.app" target="_blank" rel="noopener noreferrer" class="aff-card aff-card-project">
+        <div class="aff-card-badge">🚀</div>
+        <div class="aff-card-details">
+          <div class="aff-card-heading">
+            <h4>ProjectPal.app</h4>
+            <span class="aff-ext-arrow">↗</span>
+          </div>
+          <p>Lightweight project organizer, milestone planner, and client deliverable manager.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</aside>
+
+<style>
+  /* --- Affiliate Drawer Styles (Scoped) --- */
+  .aff-drawer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99999;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none; /* Allows clicks around tab when collapsed */
+  }
+
+  .aff-drawer * {
+    box-sizing: border-box;
+  }
+
+  /* Toggle Pill Handle */
+  .aff-toggle-btn {
+    pointer-events: auto;
+    background: transparent;
+    border: none;
+    padding: 0 0 6px 0;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .aff-tab-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(18, 20, 29, 0.92);
+    color: #e2e8f0;
+    padding: 6px 14px 6px 12px;
+    border-radius: 999px 999px 0 0;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: none;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.25);
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .aff-toggle-btn:hover .aff-tab-pill {
+    background: rgba(30, 34, 48, 0.98);
+    color: #ffffff;
+  }
+
+  .aff-chevron {
+    transition: transform 0.3s ease;
+  }
+
+  /* When open, chevron points down to collapse */
+  .aff-drawer.aff-open .aff-chevron {
+    transform: rotate(0deg);
+  }
+
+  /* When collapsed, chevron points up to open */
+  .aff-drawer:not(.aff-open) .aff-chevron {
+    transform: rotate(180deg);
+  }
+
+  /* Main Drawer Body */
+  .aff-content {
+    pointer-events: auto;
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+    background: rgba(15, 17, 23, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: none;
+    border-radius: 16px 16px 0 0;
+    padding: 16px 20px 18px 20px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.45);
+  }
+
+  .aff-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding: 0 4px;
+  }
+
+  .aff-eyebrow {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #6366f1;
+    background: rgba(99, 102, 241, 0.14);
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(99, 102, 241, 0.25);
+  }
+
+  .aff-tagline {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin: 0;
+  }
+
+  /* 3-Column Grid */
+  .aff-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  /* Individual App Cards */
+  .aff-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 12px;
+    padding: 12px 14px;
+    text-decoration: none;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .aff-card:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.065);
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
+  }
+
+  .aff-card-chef:hover { border-color: rgba(249, 115, 22, 0.45); }
+  .aff-card-budget:hover { border-color: rgba(34, 197, 94, 0.45); }
+  .aff-card-project:hover { border-color: rgba(59, 130, 246, 0.45); }
+
+  .aff-card-badge {
+    font-size: 1.35rem;
+    line-height: 1;
+    padding-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .aff-card-details {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .aff-card-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+
+  .aff-card-heading h4 {
+    margin: 0;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #f1f5f9;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .aff-ext-arrow {
+    font-size: 0.85rem;
+    color: #64748b;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+
+  .aff-card:hover .aff-ext-arrow {
+    color: #38bdf8;
+    transform: translate(2px, -2px);
+  }
+
+  .aff-card p {
+    margin: 0;
+    font-size: 0.76rem;
+    line-height: 1.35;
+    color: #94a3b8;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Responsive / Mobile Adjustments */
+  @media (max-width: 768px) {
+    .aff-grid {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .aff-content {
+      padding: 12px 14px 14px 14px;
+    }
+    .aff-header {
+      margin-bottom: 8px;
+    }
+    .aff-tagline {
+      display: none; /* Keeps drawer compact on small screens */
+    }
+  }
+</style>
+
+<script>
+  (function initAffiliateDrawer() {
+    const drawer = document.getElementById('affiliate-drawer');
+    const toggleBtn = document.getElementById('aff-drawer-toggle');
+    const content = document.getElementById('aff-drawer-content');
+
+    let isOpen = true;
+
+    function applyPosition() {
+      if (isOpen) {
+        drawer.style.transform = 'translateY(0)';
+        toggleBtn.setAttribute('aria-expanded', 'true');
+        drawer.classList.add('aff-open');
+      } else {
+        // Translate down by the exact height of the content block, keeping only the tab pill visible
+        const contentHeight = content.offsetHeight;
+        drawer.style.transform = `translateY(${contentHeight}px)`;
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        drawer.classList.remove('aff-open');
+      }
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      isOpen = !isOpen;
+      applyPosition();
+    });
+
+    // Recompute translation offset if window resizes while closed
+    window.addEventListener('resize', () => {
+      if (!isOpen) {
+        applyPosition();
+      }
+    });
+
+    // Initialize open state
+    applyPosition();
+  })();
+</script>
+<!-- END: Affiliate Bottom Drawer Component -->
 </body>
 </html>
